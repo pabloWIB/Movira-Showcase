@@ -61,14 +61,14 @@ export function Section06CTA() {
       className="min-h-screen h-screen flex items-center justify-center relative"
       style={{ background: "linear-gradient(135deg, #0040C8 0%, #0028A0 100%)" }}
     >
-      <div className="w-full max-w-5xl mx-auto px-16 text-center">
-        <div ref={macbookRef} className="mb-12">
-          <MacBookMockup videoUrl={VIDEO_URL} className="w-[80%] mx-auto" />
+      <div className="w-full max-w-5xl mx-auto px-4 md:px-16 text-center">
+        <div ref={macbookRef} className="mb-8 md:mb-12">
+          <MacBookMockup videoUrl={VIDEO_URL} className="w-full md:w-[80%] mx-auto" />
         </div>
 
         <h2
           ref={textRef}
-          style={{ fontSize: "56px", fontWeight: 700, lineHeight: 1.1, letterSpacing: "-0.02em", color: "#FFFFFF" }}
+          style={{ fontSize: "clamp(28px, 6vw, 56px)", fontWeight: 700, lineHeight: 1.1, letterSpacing: "-0.02em", color: "#FFFFFF" }}
         >
           Let&apos;s Work Together
         </h2>

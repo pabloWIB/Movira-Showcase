@@ -56,11 +56,11 @@ export function Section02Hero() {
 
   return (
     <section ref={sectionRef} id="section-hero2" className="min-h-screen h-screen flex items-center justify-center relative" style={{ background: "#F8F9FA" }}>
-      <div className="w-full max-w-7xl mx-auto px-16">
-        <div ref={titleRef} className="mb-16 text-center">
+      <div className="w-full max-w-7xl mx-auto px-4 md:px-16">
+        <div ref={titleRef} className="mb-8 md:mb-16 text-center">
           <h1
-            className="mb-6"
-            style={{ fontSize: "72px", fontWeight: 700, lineHeight: 1.1, letterSpacing: "-0.02em", color: "#000000" }}
+            className="mb-4 md:mb-6"
+            style={{ fontSize: "clamp(32px, 8vw, 72px)", fontWeight: 700, lineHeight: 1.1, letterSpacing: "-0.02em", color: "#000000" }}
           >
             <span style={{ color: "#0040C8" }}>Premium</span> Web Development
             <br />
@@ -69,7 +69,7 @@ export function Section02Hero() {
         </div>
 
         <div ref={videoRef} className="flex justify-center">
-          <MacBookMockup videoUrl={VIDEO_URL} className="w-[70%]" />
+          <MacBookMockup videoUrl={VIDEO_URL} className="w-full md:w-[70%]" />
         </div>
       </div>
     </section>

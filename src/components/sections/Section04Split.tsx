@@ -83,18 +83,18 @@ export function Section04Split() {
       className="min-h-screen h-screen flex items-center justify-center relative" 
       style={{ background: "#FBFBFB" }}
     >
-      <div className="w-full max-w-7xl mx-auto px-16">
+      <div className="w-full max-w-7xl mx-auto px-4 md:px-16">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-8 md:mb-16">
           <h2
             ref={titleRef}
             className="mb-4"
-            style={{ 
-              fontSize: "64px", 
-              fontWeight: 700, 
-              lineHeight: 1.1, 
-              letterSpacing: "-0.02em", 
-              color: "#000000" 
+            style={{
+              fontSize: "clamp(30px, 7vw, 64px)",
+              fontWeight: 700,
+              lineHeight: 1.1,
+              letterSpacing: "-0.02em",
+              color: "#000000"
             }}
           >
             Websites That <span style={{ color: "#0040C8" }}>Convert</span>
@@ -103,10 +103,10 @@ export function Section04Split() {
 
         {/* Browser Window */}
         <div ref={browserRef} className="flex justify-center">
-          <BrowserWindow 
-            videoUrl={VIDEO_URL} 
-            url="yourproject.com"
-            className="w-[85%]"
+          <BrowserWindow
+            videoUrl={VIDEO_URL}
+            url="unisoftchile.cl"
+            className="w-full md:w-[85%]"
           />
         </div>
       </div>

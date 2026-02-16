@@ -82,15 +82,15 @@ export function Section05aMobileFirst() {
       className="min-h-screen h-screen flex items-center justify-center relative"
       style={{ background: "#F8F9FA" }}
     >
-      <div className="w-full max-w-7xl mx-auto px-16">
-        <div ref={titleRef} className="mb-16 text-center">
-          <h2 style={{ fontSize: "56px", fontWeight: 700, lineHeight: 1.2, letterSpacing: "-0.01em", color: "#000000", marginBottom: "16px" }}>
+      <div className="w-full max-w-7xl mx-auto px-4 md:px-16">
+        <div ref={titleRef} className="mb-8 md:mb-16 text-center">
+          <h2 style={{ fontSize: "clamp(28px, 6vw, 56px)", fontWeight: 700, lineHeight: 1.2, letterSpacing: "-0.01em", color: "#000000", marginBottom: "16px" }}>
             Mobile-First <span style={{ color: "#0040C8" }}>Design</span>
           </h2>
         </div>
 
-        <div className="flex items-center justify-center gap-8">
-          <div ref={flanksRef} className="flex items-center gap-6">
+        <div className="flex items-center justify-center gap-4 md:gap-8">
+          <div ref={flanksRef} className="flex items-center gap-4 md:gap-6">
             <IPhoneMockup videoUrl={VIDEO_URL} />
             {/* <IPhoneMockup videoUrl={VIDEO_URL} /> */}
           </div>

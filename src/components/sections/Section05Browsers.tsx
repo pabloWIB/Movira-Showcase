@@ -74,18 +74,18 @@ export function Section05Browsers() {
 
   return (
     <section ref={sectionRef} id="section-5" className="min-h-screen h-screen flex items-center justify-center relative" style={{ background: "#FBFBFB" }}>
-      <div className="w-full max-w-6xl mx-auto px-16">
+      <div className="w-full max-w-6xl mx-auto px-4 md:px-16">
         <h2
           ref={titleRef}
-          className="text-center mb-16"
-          style={{ fontSize: "48px", fontWeight: 700, lineHeight: 1.2, letterSpacing: "-0.01em", color: "#000000" }}
+          className="text-center mb-8 md:mb-16"
+          style={{ fontSize: "clamp(24px, 5vw, 48px)", fontWeight: 700, lineHeight: 1.2, letterSpacing: "-0.01em", color: "#000000" }}
         >
           Production Ready
         </h2>
 
         <div className="flex flex-col gap-6">
           <div ref={browser1Ref}>
-            <BrowserWindow videoUrl={VIDEO_URL} url="client-project.com" />
+            <BrowserWindow videoUrl={VIDEO_URL} url="rijfrisjes.com" />
           </div>
 
           {/* <div ref={browser2Ref}>

@@ -32,7 +32,7 @@ export function IPhoneMockup({ videoUrl, className = "" }: IPhoneMockupProps) {
     <div className={`relative ${className}`}>
       {/* iPhone Body */}
       <div
-        className="relative h-[600px] w-[290px] rounded-[52px] p-3"
+        className="relative h-[420px] w-[200px] md:h-[600px] md:w-[290px] rounded-[36px] md:rounded-[52px] p-2 md:p-3"
         style={{
           background: `
             linear-gradient(145deg,
@@ -80,7 +80,7 @@ export function IPhoneMockup({ videoUrl, className = "" }: IPhoneMockupProps) {
 
         {/* Screen */}
         <div
-          className="relative h-full w-full overflow-hidden rounded-[44px]"
+          className="relative h-full w-full overflow-hidden rounded-[30px] md:rounded-[44px]"
           style={{ background: "#000" }}
         >
           <video

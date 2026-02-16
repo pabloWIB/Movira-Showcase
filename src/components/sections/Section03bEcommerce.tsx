@@ -80,15 +80,15 @@ export function Section03bEcommerce() {
       className="min-h-screen h-screen flex items-center justify-center relative"
       style={{ background: "#FBFBFB" }}
     >
-      <div className="w-full max-w-7xl mx-auto px-16">
-        <div ref={titleRef} className="mb-16 text-center">
-          <h2 style={{ fontSize: "56px", fontWeight: 700, lineHeight: 1.2, letterSpacing: "-0.01em", color: "#000000", marginBottom: "16px" }}>
+      <div className="w-full max-w-7xl mx-auto px-4 md:px-16">
+        <div ref={titleRef} className="mb-8 md:mb-16 text-center">
+          <h2 style={{ fontSize: "clamp(28px, 6vw, 56px)", fontWeight: 700, lineHeight: 1.2, letterSpacing: "-0.01em", color: "#000000", marginBottom: "16px" }}>
             E-Commerce <span style={{ color: "#0040C8" }}>Solutions</span>
           </h2>
         </div>
 
-        <div ref={browserRef} className="mb-10">
-          <BrowserWindow videoUrl={VIDEO_URL} url="premium-store.com" className="w-[85%] mx-auto" />
+        <div ref={browserRef} className="mb-6 md:mb-10">
+          <BrowserWindow videoUrl={VIDEO_URL} url="credifirme.app" className="w-full md:w-[85%] mx-auto" />
         </div>
 
         {/* <div ref={phonesRef} className="flex justify-center items-center gap-6">

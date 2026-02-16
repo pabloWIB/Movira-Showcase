@@ -80,14 +80,14 @@ export function Section03aDashboards() {
       className="min-h-screen h-screen flex items-center justify-center relative"
       style={{ background: "#FBFBFB" }}
     >
-      <div className="w-full max-w-7xl mx-auto px-16">
-        <div ref={titleRef} className="mb-16 text-center">
-          <h2 style={{ fontSize: "56px", fontWeight: 700, lineHeight: 1.2, letterSpacing: "-0.01em", color: "#000000", marginBottom: "16px" }}>
+      <div className="w-full max-w-7xl mx-auto px-4 md:px-16">
+        <div ref={titleRef} className="mb-8 md:mb-16 text-center">
+          <h2 style={{ fontSize: "clamp(28px, 6vw, 56px)", fontWeight: 700, lineHeight: 1.2, letterSpacing: "-0.01em", color: "#000000", marginBottom: "16px" }}>
             Data-Driven <span style={{ color: "#0040C8" }}>Dashboards</span>
           </h2>
         </div>
 
-        <BrowserWindow videoUrl={VIDEO_URL} url="admin-panel.io" />
+        <BrowserWindow videoUrl={VIDEO_URL} url="marketingdiqua.com" />
 
         {/* <div className="flex items-center gap-10">
           <div ref={mainRef} className="w-[62%]">

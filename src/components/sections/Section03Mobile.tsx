@@ -56,16 +56,16 @@ export function Section03Mobile() {
 
   return (
     <section ref={sectionRef} id="section-4" className="min-h-screen h-screen flex items-center justify-center relative" style={{ background: "#F8F9FA" }}>
-      <div className="w-full max-w-7xl mx-auto px-16">
+      <div className="w-full max-w-7xl mx-auto px-4 md:px-16">
         <h2
           ref={titleRef}
-          className="text-center mb-20"
-          style={{ fontSize: "48px", fontWeight: 700, lineHeight: 1.2, letterSpacing: "-0.01em", color: "#000000" }}
+          className="text-center mb-10 md:mb-20"
+          style={{ fontSize: "clamp(24px, 5vw, 48px)", fontWeight: 700, lineHeight: 1.2, letterSpacing: "-0.01em", color: "#000000" }}
         >
           Mobile Experiences
         </h2>
 
-        <div ref={phonesRef} className="flex justify-center items-center gap-8">
+        <div ref={phonesRef} className="flex justify-center items-center gap-4 md:gap-8">
           {VIDEO_URLS.map((url, i) => (
             <div key={i}>
               <IPhoneMockup videoUrl={url} />

@@ -21,11 +21,11 @@ export function Section02Grid() {
   const titleRef = useRef<HTMLDivElement>(null);
 
   const items: GridItem[] = [
-    { id: "landing", mockupType: "browser", label: "Landing Page", url: "client-site.com", videoUrl: "/videos/2.mp4" },
+    { id: "landing", mockupType: "browser", label: "Landing Page", url: "3plbridge.com", videoUrl: "/videos/2.mp4" },
     { id: "dashboard", mockupType: "macbook", label: "Dashboard", url: "", videoUrl: "/videos/3.mp4" },
-    { id: "ecommerce", mockupType: "browser", label: "E-commerce", url: "shop-demo.com", videoUrl: "/videos/4.mp4" },
+    { id: "ecommerce", mockupType: "browser", label: "E-commerce", url: "credifirme.com", videoUrl: "/videos/4.mp4" },
     { id: "saas", mockupType: "macbook", label: "SaaS", url: "", videoUrl: "/videos/5.mp4" },
-    { id: "portfolio", mockupType: "browser", label: "Portfolio", url: "portfolio-demo.com", videoUrl: "/videos/6.mp4" },
+    { id: "portfolio", mockupType: "browser", label: "Portfolio", url: "plazavirtualrd.com", videoUrl: "/videos/6.mp4" },
     { id: "mobile", mockupType: "macbook", label: "Web App", url: "", videoUrl: "/videos/7.mp4" },
   ];
 
@@ -71,15 +71,15 @@ export function Section02Grid() {
   }, []);
 
   return (
-    <section ref={sectionRef} id="section-2" className="min-h-screen h-screen flex items-center justify-center relative" style={{ background: "#F8F9FA" }}>
-      <div className="w-full max-w-7xl mx-auto px-16">
-        <div ref={titleRef} className="mb-16 text-center">
-          <h2 style={{ fontSize: "56px", fontWeight: 700, lineHeight: 1.2, letterSpacing: "-0.01em", color: "#000000", marginBottom: "16px" }}>
+    <section ref={sectionRef} id="section-2" className="min-h-screen md:h-screen flex items-center justify-center relative py-12 md:py-0" style={{ background: "#F8F9FA" }}>
+      <div className="w-full max-w-7xl mx-auto px-4 md:px-16">
+        <div ref={titleRef} className="mb-8 md:mb-16 text-center">
+          <h2 style={{ fontSize: "clamp(28px, 6vw, 56px)", fontWeight: 700, lineHeight: 1.2, letterSpacing: "-0.01em", color: "#000000", marginBottom: "16px" }}>
             Real Projects, <span style={{ color: "#0040C8" }}>Real Results</span>
           </h2>
         </div>
 
-        <div ref={gridRef} className="grid grid-cols-3 gap-8">
+        <div ref={gridRef} className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8">
           {items.map((item) => (
             <div key={item.id} className="flex flex-col items-center gap-4">
               <div className="w-full">
