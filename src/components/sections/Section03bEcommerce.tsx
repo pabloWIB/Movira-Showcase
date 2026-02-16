@@ -4,11 +4,10 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { BrowserWindow } from "@/components/mockups/BrowserWindow";
 import { IPhoneMockup } from "@/components/mockups/IPhoneMockup";
-import { ScrollButton } from "@/components/shared/ScrollButton";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const VIDEO_URL = "https://google.com";
+const VIDEO_URL = "/videos/10.mp4";
 
 export function Section03bEcommerce() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -78,10 +77,9 @@ export function Section03bEcommerce() {
     <section
       ref={sectionRef}
       id="section-3b"
-      className="min-h-screen h-screen flex items-center justify-center bg-white relative"
+      className="min-h-screen h-screen flex items-center justify-center relative"
+      style={{ background: "#FBFBFB" }}
     >
-      <ScrollButton nextSectionId="section-4" />
-
       <div className="w-full max-w-7xl mx-auto px-16">
         <div ref={titleRef} className="mb-16 text-center">
           <h2 style={{ fontSize: "56px", fontWeight: 700, lineHeight: 1.2, letterSpacing: "-0.01em", color: "#000000", marginBottom: "16px" }}>

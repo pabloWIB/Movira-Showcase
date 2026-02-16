@@ -4,11 +4,10 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { IPhoneMockup } from "@/components/mockups/IPhoneMockup";
 import { MacBookMockup } from "@/components/mockups/MacBookMockup";
-import { ScrollButton } from "@/components/shared/ScrollButton";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const VIDEO_URL = "https://google.com";
+const VIDEO_URL = "/videos/15.mp4";
 
 export function Section05aMobileFirst() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -83,8 +82,6 @@ export function Section05aMobileFirst() {
       className="min-h-screen h-screen flex items-center justify-center relative"
       style={{ background: "#F8F9FA" }}
     >
-      <ScrollButton nextSectionId="section-5" />
-
       <div className="w-full max-w-7xl mx-auto px-16">
         <div ref={titleRef} className="mb-16 text-center">
           <h2 style={{ fontSize: "56px", fontWeight: 700, lineHeight: 1.2, letterSpacing: "-0.01em", color: "#000000", marginBottom: "16px" }}>
@@ -101,14 +98,6 @@ export function Section05aMobileFirst() {
             {/* <IPhoneMockup videoUrl={VIDEO_URL} /> */}
           </div>
 
-          {/* <div ref={centerRef} className="w-[50%]">
-            <MacBookMockup videoUrl={VIDEO_URL} />
-          </div> */}
-
-          <div className="flex items-center gap-6">
-            <IPhoneMockup videoUrl={VIDEO_URL} />
-            <IPhoneMockup videoUrl={VIDEO_URL} />
-          </div>
         </div>
       </div>
     </section>

@@ -4,17 +4,15 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { MacBookMockup } from "@/components/mockups/MacBookMockup";
 import { BrowserWindow } from "@/components/mockups/BrowserWindow";
-import { ScrollButton } from "@/components/shared/ScrollButton";
 
 gsap.registerPlugin(ScrollTrigger);
-
-const VIDEO_URL = "https://google.com";
 
 interface GridItem {
   id: string;
   mockupType: "macbook" | "browser";
   label: string;
   url: string;
+  videoUrl: string;
 }
 
 export function Section02Grid() {
@@ -23,12 +21,12 @@ export function Section02Grid() {
   const titleRef = useRef<HTMLDivElement>(null);
 
   const items: GridItem[] = [
-    { id: "landing", mockupType: "browser", label: "Landing Page", url: "client-site.com" },
-    { id: "dashboard", mockupType: "macbook", label: "Dashboard", url: "" },
-    { id: "ecommerce", mockupType: "browser", label: "E-commerce", url: "shop-demo.com" },
-    { id: "saas", mockupType: "macbook", label: "SaaS", url: "" },
-    { id: "portfolio", mockupType: "browser", label: "Portfolio", url: "portfolio-demo.com" },
-    { id: "mobile", mockupType: "macbook", label: "Mobile App", url: "" },
+    { id: "landing", mockupType: "browser", label: "Landing Page", url: "client-site.com", videoUrl: "/videos/2.mp4" },
+    { id: "dashboard", mockupType: "macbook", label: "Dashboard", url: "", videoUrl: "/videos/3.mp4" },
+    { id: "ecommerce", mockupType: "browser", label: "E-commerce", url: "shop-demo.com", videoUrl: "/videos/4.mp4" },
+    { id: "saas", mockupType: "macbook", label: "SaaS", url: "", videoUrl: "/videos/5.mp4" },
+    { id: "portfolio", mockupType: "browser", label: "Portfolio", url: "portfolio-demo.com", videoUrl: "/videos/6.mp4" },
+    { id: "mobile", mockupType: "macbook", label: "Web App", url: "", videoUrl: "/videos/7.mp4" },
   ];
 
   useEffect(() => {
@@ -74,8 +72,6 @@ export function Section02Grid() {
 
   return (
     <section ref={sectionRef} id="section-2" className="min-h-screen h-screen flex items-center justify-center relative" style={{ background: "#F8F9FA" }}>
-      <ScrollButton nextSectionId="section-3a" />
-
       <div className="w-full max-w-7xl mx-auto px-16">
         <div ref={titleRef} className="mb-16 text-center">
           <h2 style={{ fontSize: "56px", fontWeight: 700, lineHeight: 1.2, letterSpacing: "-0.01em", color: "#000000", marginBottom: "16px" }}>
@@ -91,9 +87,9 @@ export function Section02Grid() {
             <div key={item.id} className="flex flex-col items-center gap-4">
               <div className="w-full">
                 {item.mockupType === "browser" ? (
-                  <BrowserWindow videoUrl={VIDEO_URL} url={item.url} />
+                  <BrowserWindow videoUrl={item.videoUrl} url={item.url} />
                 ) : (
-                  <MacBookMockup videoUrl={VIDEO_URL} />
+                  <MacBookMockup videoUrl={item.videoUrl} />
                 )}
               </div>
               <span

@@ -8,7 +8,7 @@ import { Award, Star, Clock } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const VIDEO_URL = "https://google.com";
+const VIDEO_URL = "https://pomposa.com";
 
 export function Section04Stats() {
   const sectionRef = useRef<HTMLDivElement>(null);

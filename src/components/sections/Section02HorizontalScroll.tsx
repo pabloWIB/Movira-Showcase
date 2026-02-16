@@ -7,7 +7,7 @@ import { BrowserWindow } from "@/components/mockups/BrowserWindow";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const VIDEO_URL = "https://google.com";
+const VIDEO_URL = "https://pomposa.com";
 
 interface GridItem {
   id: string;
@@ -27,7 +27,7 @@ export function Section02Grid() {
     { id: "ecommerce", mockupType: "browser", label: "E-commerce", url: "shop-demo.com" },
     { id: "saas", mockupType: "macbook", label: "SaaS", url: "" },
     { id: "portfolio", mockupType: "browser", label: "Portfolio", url: "portfolio-demo.com" },
-    { id: "mobile", mockupType: "macbook", label: "Mobile App", url: "" },
+    { id: "mobile", mockupType: "macbook", label: "Web App", url: "" },
   ];
 
   useEffect(() => {

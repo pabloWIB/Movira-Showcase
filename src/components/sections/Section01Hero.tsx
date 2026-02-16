@@ -3,11 +3,11 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { MacBookMockup } from "@/components/mockups/MacBookMockup";
-import { ScrollButton } from "@/components/shared/ScrollButton";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const VIDEO_URL = "https://google.com";
+const VIDEO_URL = "/videos/1.mp4";
+
 
 export function Section01Hero() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -56,9 +56,7 @@ export function Section01Hero() {
   }, []);
 
   return (
-    <section ref={sectionRef} id="section-1" className="min-h-screen h-screen flex items-center justify-center bg-white relative">
-      <ScrollButton nextSectionId="section-2" />
-
+    <section ref={sectionRef} id="section-1" className="min-h-screen h-screen flex items-center justify-center relative" style={{ background: "#FBFBFB" }}>
       <div className="w-full max-w-7xl mx-auto px-16">
         <div ref={titleRef} className="mb-16 text-center">
           <h1

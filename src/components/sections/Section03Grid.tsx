@@ -7,7 +7,7 @@ import { Zap, Palette, Code2, BarChart3 } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const VIDEO_URL = "https://google.com";
+const VIDEO_URL = "https://pomposa.com";
 
 interface Feature {
   id: string;

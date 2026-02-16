@@ -1,42 +1,88 @@
 "use client";
-import { cn } from "@/lib/utils";
 import React, { useRef, useEffect } from "react";
 
 interface MacBookMockupProps {
   videoUrl: string;
   className?: string;
-  autoPlay?: boolean;
 }
 
-export function MacBookMockup({ videoUrl, className, autoPlay = true }: MacBookMockupProps) {
+export function MacBookMockup({ videoUrl, className = "" }: MacBookMockupProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    if (videoRef.current && autoPlay) {
-      videoRef.current.play().catch(() => {});
-    }
-  }, [autoPlay]);
+    const video = videoRef.current;
+    if (!video) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    observer.observe(video);
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <div className={cn("gpu-accelerated w-full max-w-5xl", className)}>
-      <div
-        className="relative rounded-xl p-3"
-        style={{
-          background: "linear-gradient(to bottom, #2d2d2d, #1a1a1a)",
-          boxShadow: "0 4px 20px rgba(0, 0, 0, 0.08), 0 20px 60px rgba(0, 0, 0, 0.06)",
-        }}
-      >
-        <div className="mx-auto mb-2 h-1.5 w-16 rounded-full bg-black/30" />
-        <div className="overflow-hidden rounded-lg bg-black">
-          <video ref={videoRef} className="w-full" autoPlay={autoPlay} loop muted playsInline>
-            <source src={videoUrl} type="video/mp4" />
-          </video>
+    <div
+      className={`overflow-hidden rounded-xl ${className}`}
+      style={{ boxShadow: "0 4px 20px rgba(0, 0, 0, 0.3), 0 20px 60px rgba(0, 0, 0, 0.25)" }}
+    >
+      {/* MacBook Top Bar */}
+      <div className="flex h-8 items-center gap-3 border-b border-[#1a1a1a] bg-[#2d2d2d] px-4">
+        <div className="flex gap-1.5">
+          <div className="h-3 w-3 rounded-full bg-[#FF5F57]" />
+          <div className="h-3 w-3 rounded-full bg-[#FFBD2E]" />
+          <div className="h-3 w-3 rounded-full bg-[#28CA41]" />
+        </div>
+
+        {/* Camera Notch */}
+        <div className="absolute left-1/2 -translate-x-1/2">
+          <div
+            className="h-1 w-1 rounded-full"
+            style={{
+              background: "radial-gradient(circle, #1a3d2e 0%, #0a1a12 70%)",
+              boxShadow: "0 0 2px rgba(0, 255, 100, 0.3)",
+            }}
+          />
         </div>
       </div>
-      <div
-        className="-mt-1 h-5 rounded-b-xl"
-        style={{ background: "linear-gradient(to bottom, #3a3a3a, #2d2d2d)" }}
-      />
+
+      {/* Screen */}
+      <div className="relative bg-black">
+        <video
+          ref={videoRef}
+          className="w-full"
+          loop
+          muted
+          playsInline
+        >
+          <source src={videoUrl} type="video/mp4" />
+        </video>
+
+        {/* Screen Glare Effect */}
+        <div
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background: `
+              linear-gradient(
+                135deg,
+                rgba(255, 255, 255, 0.1) 0%,
+                rgba(255, 255, 255, 0.03) 20%,
+                transparent 40%,
+                transparent 60%,
+                rgba(255, 255, 255, 0.02) 80%,
+                rgba(255, 255, 255, 0.08) 100%
+              )
+            `,
+          }}
+        />
+      </div>
     </div>
   );
 }

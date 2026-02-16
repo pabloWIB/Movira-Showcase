@@ -6,9 +6,22 @@ export function BrowserWindow({ videoUrl, url = "yourproject.com", className }: 
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.play().catch(() => {});
-    }
+    const video = videoRef.current;
+    if (!video) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    observer.observe(video);
+    return () => observer.disconnect();
   }, []);
 
   return (
@@ -31,7 +44,7 @@ export function BrowserWindow({ videoUrl, url = "yourproject.com", className }: 
         </div>
       </div>
       <div className="bg-white">
-        <video ref={videoRef} className="w-full" autoPlay loop muted playsInline>
+        <video ref={videoRef} className="w-full" loop muted playsInline>
           <source src={videoUrl} type="video/mp4" />
         </video>
       </div>

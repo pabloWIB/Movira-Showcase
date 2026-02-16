@@ -4,11 +4,10 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { MacBookMockup } from "@/components/mockups/MacBookMockup";
 import { BrowserWindow } from "@/components/mockups/BrowserWindow";
-import { ScrollButton } from "@/components/shared/ScrollButton";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const VIDEO_URL = "https://google.com";
+const VIDEO_URL = "/videos/8.mp4";
 
 export function Section03aDashboards() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -79,10 +78,8 @@ export function Section03aDashboards() {
       ref={sectionRef}
       id="section-3a"
       className="min-h-screen h-screen flex items-center justify-center relative"
-      style={{ background: "#F8F9FA" }}
+      style={{ background: "#FBFBFB" }}
     >
-      <ScrollButton nextSectionId="section-3b" />
-
       <div className="w-full max-w-7xl mx-auto px-16">
         <div ref={titleRef} className="mb-16 text-center">
           <h2 style={{ fontSize: "56px", fontWeight: 700, lineHeight: 1.2, letterSpacing: "-0.01em", color: "#000000", marginBottom: "16px" }}>

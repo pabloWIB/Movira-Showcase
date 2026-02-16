@@ -2,35 +2,34 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { MacBookMockup } from "@/components/mockups/MacBookMockup";
-import { IPhoneMockup } from "@/components/mockups/IPhoneMockup";
-import { ScrollButton } from "@/components/shared/ScrollButton";
+import { BrowserWindow } from "@/components/mockups/BrowserWindow";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const VIDEO_URL = "https://google.com";
+const VIDEO_URL = "/videos/14.mp4";
 
 export function Section04Split() {
   const sectionRef = useRef<HTMLElement>(null);
-  const macbookRef = useRef<HTMLDivElement>(null);
-  const iphoneRef = useRef<HTMLDivElement>(null);
-  const textRef = useRef<HTMLParagraphElement>(null);
+  const browserRef = useRef<HTMLDivElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const subtitleRef = useRef<HTMLParagraphElement>(null);
 
   useEffect(() => {
     const section = sectionRef.current;
-    const macbook = macbookRef.current;
-    const iphone = iphoneRef.current;
-    const text = textRef.current;
+    const browser = browserRef.current;
+    const title = titleRef.current;
+    const subtitle = subtitleRef.current;
 
-    if (!section || !macbook || !iphone || !text) return;
+    if (!section || !browser || !title || !subtitle) return;
 
+    // Title animation
     gsap.fromTo(
-      macbook,
-      { x: -100, opacity: 0 },
+      title,
+      { y: 30, opacity: 0 },
       {
-        x: 0,
+        y: 0,
         opacity: 1,
-        duration: 1.0,
+        duration: 0.8,
         ease: "power3.out",
         scrollTrigger: {
           trigger: section,
@@ -40,30 +39,33 @@ export function Section04Split() {
       }
     );
 
+    // Subtitle animation
     gsap.fromTo(
-      iphone,
-      { x: 100, opacity: 0 },
-      {
-        x: 0,
-        opacity: 1,
-        duration: 1.0,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: section,
-          start: "top 70%",
-          toggleActions: "play none none reverse",
-        },
-      }
-    );
-
-    gsap.fromTo(
-      text,
+      subtitle,
       { y: 20, opacity: 0 },
       {
         y: 0,
         opacity: 1,
         duration: 0.8,
-        delay: 0.5,
+        delay: 0.2,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: section,
+          start: "top 70%",
+          toggleActions: "play none none reverse",
+        },
+      }
+    );
+
+    // Browser window animation
+    gsap.fromTo(
+      browser,
+      { scale: 0.95, opacity: 0 },
+      {
+        scale: 1,
+        opacity: 1,
+        duration: 1.0,
+        delay: 0.4,
         ease: "power3.out",
         scrollTrigger: {
           trigger: section,
@@ -75,24 +77,51 @@ export function Section04Split() {
   }, []);
 
   return (
-    <section ref={sectionRef} id="section-4-split" className="min-h-screen h-screen flex items-center justify-center relative" style={{ background: "#F8F9FA" }}>
-      <ScrollButton nextSectionId="section-5a" />
-
+    <section 
+      ref={sectionRef} 
+      id="section-4-split" 
+      className="min-h-screen h-screen flex items-center justify-center relative" 
+      style={{ background: "#FBFBFB" }}
+    >
       <div className="w-full max-w-7xl mx-auto px-16">
-        <div className="flex items-center justify-center gap-16">
-          <div ref={macbookRef} className="w-[60%]">
-            <MacBookMockup videoUrl={VIDEO_URL} />
-          </div>
-
+        {/* Header */}
+        <div className="text-center mb-16">
+          <h2
+            ref={titleRef}
+            className="mb-4"
+            style={{ 
+              fontSize: "64px", 
+              fontWeight: 700, 
+              lineHeight: 1.1, 
+              letterSpacing: "-0.02em", 
+              color: "#000000" 
+            }}
+          >
+            Websites That <span style={{ color: "#0040C8" }}>Convert</span>
+          </h2>
+          <p
+            ref={subtitleRef}
+            style={{ 
+              fontSize: "20px", 
+              fontWeight: 400, 
+              lineHeight: 1.6, 
+              color: "#666666",
+              maxWidth: "600px",
+              margin: "0 auto"
+            }}
+          >
+            Landing pages designed to turn visitors into customers
+          </p>
         </div>
 
-        <p
-          ref={textRef}
-          className="text-center mt-12"
-          style={{ fontSize: "32px", fontWeight: 600, color: "#666666" }}
-        >
-          Responsive Design
-        </p>
+        {/* Browser Window */}
+        <div ref={browserRef} className="flex justify-center">
+          <BrowserWindow 
+            videoUrl={VIDEO_URL} 
+            url="yourproject.com"
+            className="w-[85%]"
+          />
+        </div>
       </div>
     </section>
   );

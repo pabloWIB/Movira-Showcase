@@ -6,7 +6,7 @@ import { MacBookMockup } from "@/components/mockups/MacBookMockup";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const VIDEO_URL = "https://google.com";
+const VIDEO_URL = "/videos/17.mp4";
 
 export function Section06CTA() {
   const sectionRef = useRef<HTMLElement>(null);
