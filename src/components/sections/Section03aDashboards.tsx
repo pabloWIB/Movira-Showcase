@@ -85,9 +85,6 @@ export function Section03aDashboards() {
           <h2 style={{ fontSize: "56px", fontWeight: 700, lineHeight: 1.2, letterSpacing: "-0.01em", color: "#000000", marginBottom: "16px" }}>
             Data-Driven <span style={{ color: "#0040C8" }}>Dashboards</span>
           </h2>
-          <p style={{ fontSize: "18px", lineHeight: 1.6, color: "#666666", maxWidth: "500px", margin: "0 auto" }}>
-            Real-time analytics and admin panels built for scale.
-          </p>
         </div>
 
         <BrowserWindow videoUrl={VIDEO_URL} url="admin-panel.io" />

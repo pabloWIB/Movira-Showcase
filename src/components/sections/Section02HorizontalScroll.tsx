@@ -79,9 +79,6 @@ export function Section02Grid() {
           <h2 style={{ fontSize: "56px", fontWeight: 700, lineHeight: 1.2, letterSpacing: "-0.01em", color: "#000000", marginBottom: "16px" }}>
             Real Projects, <span style={{ color: "#0040C8" }}>Real Results</span>
           </h2>
-          <p style={{ fontSize: "18px", lineHeight: 1.6, color: "#666666", maxWidth: "500px", margin: "0 auto" }}>
-            A selection of production-ready applications built for real clients.
-          </p>
         </div>
 
         {/* 2x3 Grid */}

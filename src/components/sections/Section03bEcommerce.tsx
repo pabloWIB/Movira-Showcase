@@ -85,9 +85,6 @@ export function Section03bEcommerce() {
           <h2 style={{ fontSize: "56px", fontWeight: 700, lineHeight: 1.2, letterSpacing: "-0.01em", color: "#000000", marginBottom: "16px" }}>
             E-Commerce <span style={{ color: "#0040C8" }}>Solutions</span>
           </h2>
-          <p style={{ fontSize: "18px", lineHeight: 1.6, color: "#666666", maxWidth: "500px", margin: "0 auto" }}>
-            Conversion-optimized storefronts across every device.
-          </p>
         </div>
 
         <div ref={browserRef} className="mb-10">

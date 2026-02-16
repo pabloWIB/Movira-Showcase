@@ -66,9 +66,6 @@ export function Section02Hero() {
             <br />
             Building Products That Convert
           </h1>
-          <p style={{ fontSize: "18px", fontWeight: 400, lineHeight: 1.6, color: "#666666", maxWidth: "600px", margin: "0 auto" }}>
-            Fast, modern, and functional web experiences for startups and agencies.
-          </p>
         </div>
 
         <div ref={videoRef} className="flex justify-center">

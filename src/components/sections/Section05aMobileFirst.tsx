@@ -87,9 +87,6 @@ export function Section05aMobileFirst() {
           <h2 style={{ fontSize: "56px", fontWeight: 700, lineHeight: 1.2, letterSpacing: "-0.01em", color: "#000000", marginBottom: "16px" }}>
             Mobile-First <span style={{ color: "#0040C8" }}>Design</span>
           </h2>
-          <p style={{ fontSize: "18px", lineHeight: 1.6, color: "#666666", maxWidth: "500px", margin: "0 auto" }}>
-            Every pixel crafted for the mobile experience first.
-          </p>
         </div>
 
         <div className="flex items-center justify-center gap-8">

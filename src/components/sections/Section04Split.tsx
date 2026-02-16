@@ -99,19 +99,6 @@ export function Section04Split() {
           >
             Websites That <span style={{ color: "#0040C8" }}>Convert</span>
           </h2>
-          <p
-            ref={subtitleRef}
-            style={{ 
-              fontSize: "20px", 
-              fontWeight: 400, 
-              lineHeight: 1.6, 
-              color: "#666666",
-              maxWidth: "600px",
-              margin: "0 auto"
-            }}
-          >
-            Landing pages designed to turn visitors into customers
-          </p>
         </div>
 
         {/* Browser Window */}
