@@ -62,9 +62,9 @@ export function Section02Hero() {
             className="mb-4 md:mb-6"
             style={{ fontSize: "clamp(32px, 8vw, 72px)", fontWeight: 700, lineHeight: 1.1, letterSpacing: "-0.02em", color: "#000000" }}
           >
-            <span style={{ color: "#0040C8" }}>Premium</span> Web Development
+            Full-Stack <span style={{ color: "#0040C8" }}>Development</span>
             <br />
-            Building Products That Convert
+            Scalable Solutions
           </h1>
         </div>
 

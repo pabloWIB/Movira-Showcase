@@ -22,11 +22,11 @@ export function Section02Grid() {
 
   const items: GridItem[] = [
     { id: "landing", mockupType: "browser", label: "Landing Page", url: "3plbridge.com", videoUrl: "/videos/2.mp4" },
-    { id: "dashboard", mockupType: "macbook", label: "Dashboard", url: "", videoUrl: "/videos/3.mp4" },
-    { id: "ecommerce", mockupType: "browser", label: "E-commerce", url: "credifirme.com", videoUrl: "/videos/4.mp4" },
-    { id: "saas", mockupType: "macbook", label: "SaaS", url: "", videoUrl: "/videos/5.mp4" },
-    { id: "portfolio", mockupType: "browser", label: "Portfolio", url: "plazavirtualrd.com", videoUrl: "/videos/6.mp4" },
-    { id: "mobile", mockupType: "macbook", label: "Web App", url: "", videoUrl: "/videos/7.mp4" },
+    { id: "dashboard", mockupType: "macbook", label: "Real-Time Analytics", url: "", videoUrl: "/videos/3.mp4" },
+    { id: "ecommerce", mockupType: "browser", label: "Full-Stack Platform", url: "credifirme.com", videoUrl: "/videos/4.mp4" },
+    { id: "saas", mockupType: "macbook", label: "SaaS Dashboard", url: "", videoUrl: "/videos/5.mp4" },
+    { id: "portfolio", mockupType: "browser", label: "Custom Web App", url: "plazavirtualrd.com", videoUrl: "/videos/6.mp4" },
+    { id: "mobile", mockupType: "macbook", label: "Interactive UI", url: "", videoUrl: "/videos/7.mp4" },
   ];
 
   useEffect(() => {

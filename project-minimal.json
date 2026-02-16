@@ -38,6 +38,7 @@
     "next.config.ts": "file",
     "package-lock.json": "config",
     "package.json": "config",
+    "project-minimal.json": "config",
     "public": {
       "file.svg": "image",
       "globe.svg": "image",
@@ -64,6 +65,7 @@
         },
         "sections": {
           "Section01Hero.tsx": "file",
+          "Section02Hero.tsx": "file",
           "Section02HorizontalScroll.tsx": "file",
           "Section02ProjectGrid.tsx": "file",
           "Section03aDashboards.tsx": "file",
@@ -104,6 +106,7 @@
         "index.ts": "file"
       }
     },
+    "tailwind.config.ts": "file",
     "tsconfig.json": "config"
   }
 }

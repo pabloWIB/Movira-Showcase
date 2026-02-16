@@ -62,7 +62,7 @@ export function Section03Mobile() {
           className="text-center mb-10 md:mb-20"
           style={{ fontSize: "clamp(24px, 5vw, 48px)", fontWeight: 700, lineHeight: 1.2, letterSpacing: "-0.01em", color: "#000000" }}
         >
-          Mobile Experiences
+          Mobile <span style={{ color: "#0040C8" }}>Experiences</span>
         </h2>
 
         <div ref={phonesRef} className="flex justify-center items-center gap-4 md:gap-8">

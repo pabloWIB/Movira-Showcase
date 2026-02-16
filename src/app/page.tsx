@@ -65,7 +65,7 @@ export default function Home() {
       <Section02Grid />
       <Section03aDashboards />
       <Section02Hero />
-      <Section03bEcommerce />
+      {/* <Section03bEcommerce /> */}
       <Section03Mobile />
       <Section04Split />
       <Section05aMobileFirst />

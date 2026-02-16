@@ -80,7 +80,7 @@ export function Section05Browsers() {
           className="text-center mb-8 md:mb-16"
           style={{ fontSize: "clamp(24px, 5vw, 48px)", fontWeight: 700, lineHeight: 1.2, letterSpacing: "-0.01em", color: "#000000" }}
         >
-          Production Ready
+          Optimized <span style={{ color: "#0040C8" }}>Performance</span>
         </h2>
 
         <div className="flex flex-col gap-6">
