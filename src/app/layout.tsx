@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
-// import GridBackground from "@/components/GridBackground";
 
 export const metadata: Metadata = {
-  title: "Premium Web Development",
-  description: "Building products that convert",
+  title: "",
+  description: "",
 };
 
 export default function RootLayout({

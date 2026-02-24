@@ -5,7 +5,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Section01Hero } from "@/components/sections/Section01Hero";
 import { Section02Grid } from "@/components/sections/Section02ProjectGrid";
 import { Section03aDashboards } from "@/components/sections/Section03aDashboards";
-import { Section03bEcommerce } from "@/components/sections/Section03bEcommerce";
 import { Section03Mobile } from "@/components/sections/Section03Mobile";
 import { Section04Split } from "@/components/sections/Section04Split";
 import { Section05aMobileFirst } from "@/components/sections/Section05aMobileFirst";
@@ -65,7 +64,6 @@ export default function Home() {
       <Section02Grid />
       <Section03aDashboards />
       <Section02Hero />
-      {/* <Section03bEcommerce /> */}
       <Section03Mobile />
       <Section04Split />
       <Section05aMobileFirst />

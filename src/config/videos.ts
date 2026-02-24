@@ -8,5 +8,4 @@ export const videoAssets: VideoAsset[] = [
     format: "desktop",
     duration: 5,
   },
-  // USER WILL ADD MORE VIDEOS LATER
 ];

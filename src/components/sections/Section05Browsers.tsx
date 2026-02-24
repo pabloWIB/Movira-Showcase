@@ -85,7 +85,7 @@ export function Section05Browsers() {
 
         <div className="flex flex-col gap-6">
           <div ref={browser1Ref}>
-            <BrowserWindow videoUrl={VIDEO_URL} url="rijfrisjes.com" />
+            <BrowserWindow videoUrl={VIDEO_URL} url="" />
           </div>
 
           {/* <div ref={browser2Ref}>

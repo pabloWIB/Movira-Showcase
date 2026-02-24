@@ -87,7 +87,7 @@ export function Section03aDashboards() {
           </h2>
         </div>
 
-        <BrowserWindow videoUrl={VIDEO_URL} url="marketingdiqua.com" />
+        <BrowserWindow videoUrl={VIDEO_URL} url="" />
 
         {/* <div className="flex items-center gap-10">
           <div ref={mainRef} className="w-[62%]">

@@ -21,11 +21,11 @@ export function Section02Grid() {
   const titleRef = useRef<HTMLDivElement>(null);
 
   const items: GridItem[] = [
-    { id: "landing", mockupType: "browser", label: "Landing Page", url: "3plbridge.com", videoUrl: "/videos/2.mp4" },
+    { id: "landing", mockupType: "browser", label: "Landing Page", url: "", videoUrl: "/videos/2.mp4" },
     { id: "dashboard", mockupType: "macbook", label: "Real-Time Analytics", url: "", videoUrl: "/videos/3.mp4" },
-    { id: "ecommerce", mockupType: "browser", label: "Full-Stack Platform", url: "credifirme.com", videoUrl: "/videos/4.mp4" },
+    { id: "ecommerce", mockupType: "browser", label: "Full-Stack Platform", url: "", videoUrl: "/videos/4.mp4" },
     { id: "saas", mockupType: "macbook", label: "SaaS Dashboard", url: "", videoUrl: "/videos/5.mp4" },
-    { id: "portfolio", mockupType: "browser", label: "Custom Web App", url: "plazavirtualrd.com", videoUrl: "/videos/6.mp4" },
+    { id: "portfolio", mockupType: "browser", label: "Custom Web App", url: "", videoUrl: "/videos/6.mp4" },
     { id: "mobile", mockupType: "macbook", label: "Interactive UI", url: "", videoUrl: "/videos/7.mp4" },
   ];
 

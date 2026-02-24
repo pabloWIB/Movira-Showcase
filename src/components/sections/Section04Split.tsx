@@ -105,7 +105,7 @@ export function Section04Split() {
         <div ref={browserRef} className="flex justify-center">
           <BrowserWindow
             videoUrl={VIDEO_URL}
-            url="unisoftchile.cl"
+            url=""
             className="w-full md:w-[85%]"
           />
         </div>

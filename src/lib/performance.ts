@@ -1,4 +1,3 @@
-// Preload critical videos
 export const preloadVideos = (urls: string[]) => {
   if (typeof window === "undefined") return;
 
@@ -10,6 +9,3 @@ export const preloadVideos = (urls: string[]) => {
     document.head.appendChild(link);
   });
 };
-
-// Call this in app/layout.tsx useEffect
-// preloadVideos(['/videos/hero.mp4', '/videos/best-project.mp4']);

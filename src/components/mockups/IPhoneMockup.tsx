@@ -30,7 +30,6 @@ export function IPhoneMockup({ videoUrl, className = "" }: IPhoneMockupProps) {
 
   return (
     <div className={`relative ${className}`}>
-      {/* iPhone Body */}
       <div
         className="relative h-[420px] w-[200px] md:h-[600px] md:w-[290px] rounded-[36px] md:rounded-[52px] p-2 md:p-3"
         style={{
@@ -53,7 +52,6 @@ export function IPhoneMockup({ videoUrl, className = "" }: IPhoneMockupProps) {
           `,
         }}
       >
-        {/* Power Button */}
         <div
           className="absolute right-0 top-24 h-16 w-1 rounded-l-sm"
           style={{
@@ -62,7 +60,6 @@ export function IPhoneMockup({ videoUrl, className = "" }: IPhoneMockupProps) {
           }}
         />
 
-        {/* Volume Buttons */}
         <div
           className="absolute left-0 top-28 h-12 w-1 rounded-r-sm"
           style={{
@@ -78,7 +75,6 @@ export function IPhoneMockup({ videoUrl, className = "" }: IPhoneMockupProps) {
           }}
         />
 
-        {/* Screen */}
         <div
           className="relative h-full w-full overflow-hidden rounded-[30px] md:rounded-[44px]"
           style={{ background: "#000" }}
@@ -93,12 +89,10 @@ export function IPhoneMockup({ videoUrl, className = "" }: IPhoneMockupProps) {
             <source src={videoUrl} type="video/mp4" />
           </video>
 
-          {/* Screen Glare Effect */}
           <div className="pointer-events-none absolute inset-0" />
         </div>
       </div>
 
-      {/* Shadow Below iPhone */}
       <div
         className="absolute -bottom-8 left-1/2 h-12 w-[70%] -translate-x-1/2 blur-2xl"
         style={{
