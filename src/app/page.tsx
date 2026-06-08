@@ -84,8 +84,8 @@ function renderSlide(slide: Slide, zIndex: number) {
       return <GigSection key={slide.id} {...slide} zIndex={zIndex} />;
     case "split":
       return <SplitSection key={slide.id} {...slide} zIndex={zIndex} />;
-    case "ecosystem":
-      return <EcosystemGrid key={slide.id} {...slide} zIndex={zIndex} />;
+    // case "ecosystem":
+    //   return <EcosystemGrid key={slide.id} {...slide} zIndex={zIndex} />;
     case "moduleflow":
       return <ModuleFlow key={slide.id} {...slide} zIndex={zIndex} />;
     case "techstack":
