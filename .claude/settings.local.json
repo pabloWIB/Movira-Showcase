@@ -4,7 +4,15 @@
       "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\pablo\\\\Desktop\\\\WIB\\\\aps\\\\Saas-showcase\" -Force)",
       "Bash(Select-Object Name, PSIsContainer)",
       "Bash(Format-Table -AutoSize)",
-      "Bash(npx tsc *)"
+      "Bash(npx tsc *)",
+      "PowerShell(npm install *)",
+      "PowerShell(npx tsc --noEmit 2>&1 | Select-Object -First 30; \"exit: $LASTEXITCODE\")",
+      "PowerShell(npx tsc --noEmit)",
+      "PowerShell(npx tsc --noEmit 2>&1 | Select-Object -First 40)",
+      "Bash(git rm *)",
+      "PowerShell(npx tsc --noEmit 2>&1 | Select-Object -First 30)",
+      "Bash(git mv *)",
+      "PowerShell(Move-Item *)"
     ]
   }
 }
