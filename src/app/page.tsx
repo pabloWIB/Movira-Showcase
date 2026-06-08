@@ -74,8 +74,6 @@ const SLIDES: Slide[] = [
   { kind: "moduleflow", id: "mv-8", bg: GRAY, text: "Así se conecta todo" },
 
   { kind: "techstack", id: "mv-9", bg: WHITE, text: "Lo que ya está en producción" },
-
-  { kind: "cta", id: "mv-11", text: "", url: "empresas.movira.com.co", video: "/videos/dashboard-tracking.mp4", poster: P.dashboardTracking },
 ];
 
 const ALL_IDS = SLIDES.map((s) => s.id);
@@ -98,8 +96,6 @@ function renderSlide(slide: Slide, zIndex: number) {
       return <ModuleFlow key={slide.id} {...slide} zIndex={zIndex} />;
     case "techstack":
       return <TechStackSection key={slide.id} {...slide} zIndex={zIndex} />;
-    case "cta":
-      return <MoviraCTA key={slide.id} {...slide} zIndex={zIndex} />;
   }
 }
 
