@@ -5,7 +5,6 @@ export interface AndroidProps extends SVGProps<SVGSVGElement> {
   height?: number
   src?: string
   videoSrc?: string
-  /** A live React screen rendered inside the phone viewport (mini-app). */
   screen?: ReactNode
 }
 

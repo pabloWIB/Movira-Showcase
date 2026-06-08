@@ -76,7 +76,6 @@ export function AnimatedBeamMultipleOutputDemo({
         </div>
       </div>
 
-      {/* AnimatedBeams */}
       <AnimatedBeam
         containerRef={containerRef}
         fromRef={div1Ref}

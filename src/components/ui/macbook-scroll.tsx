@@ -85,7 +85,6 @@ export const MacbookScroll = ({
           </span>
         )}
       </motion.h2>
-      {/* Lid */}
       <Lid
         src={src}
         videoSrc={videoSrc}
@@ -94,9 +93,7 @@ export const MacbookScroll = ({
         rotate={rotate}
         translate={translate}
       />
-      {/* Base area */}
       <div className="relative -z-10 h-[22rem] w-[32rem] overflow-hidden rounded-2xl bg-gray-200 dark:bg-[#272729]">
-        {/* above keyboard bar */}
         <div className="relative h-10 w-full">
           <div className="absolute inset-x-0 mx-auto h-4 w-[80%] bg-[#050505]" />
         </div>
@@ -205,7 +202,6 @@ export const Trackpad = () => {
 export const Keypad = () => {
   return (
     <div className="mx-1 h-full [transform:translateZ(0)] rounded-md bg-[#050505] p-1 [will-change:transform]">
-      {/* First Row */}
       <div className="mb-[2px] flex w-full shrink-0 gap-[2px]">
         <KBtn
           className="w-10 items-end justify-start pb-[2px] pl-[4px]"
@@ -268,7 +264,6 @@ export const Keypad = () => {
         </KBtn>
       </div>
 
-      {/* Second row */}
       <div className="mb-[2px] flex w-full shrink-0 gap-[2px]">
         <KBtn>
           <span className="block">~</span>
@@ -330,7 +325,6 @@ export const Keypad = () => {
         </KBtn>
       </div>
 
-      {/* Third row */}
       <div className="mb-[2px] flex w-full shrink-0 gap-[2px]">
         <KBtn
           className="w-10 items-end justify-start pb-[2px] pl-[4px]"
@@ -382,7 +376,6 @@ export const Keypad = () => {
         </KBtn>
       </div>
 
-      {/* Fourth Row */}
       <div className="mb-[2px] flex w-full shrink-0 gap-[2px]">
         <KBtn
           className="w-[2.8rem] items-end justify-start pb-[2px] pl-[4px]"
@@ -433,7 +426,6 @@ export const Keypad = () => {
         </KBtn>
       </div>
 
-      {/* Fifth Row */}
       <div className="mb-[2px] flex w-full shrink-0 gap-[2px]">
         <KBtn
           className="w-[3.65rem] items-end justify-start pb-[2px] pl-[4px]"
@@ -482,7 +474,6 @@ export const Keypad = () => {
         </KBtn>
       </div>
 
-      {/* sixth Row */}
       <div className="mb-[2px] flex w-full shrink-0 gap-[2px]">
         <KBtn className="" childrenClassName="h-full justify-between py-[4px]">
           <div className="flex w-full justify-end pr-1">

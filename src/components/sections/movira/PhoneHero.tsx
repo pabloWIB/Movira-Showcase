@@ -2,7 +2,6 @@
 import { useRef } from "react";
 import { AndroidFrame, FadeTop, montserrat, useSlideEntrance } from "./shared";
 
-// Slide 1 — "Todo empezó con una app" · Android (app de conductores) + título tipeado
 export function PhoneHero({
   id,
   text,

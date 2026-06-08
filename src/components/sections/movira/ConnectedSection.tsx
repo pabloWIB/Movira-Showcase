@@ -11,7 +11,6 @@ import {
   useSlideEntrance,
 } from "./shared";
 
-// Slide 2 — "Conectada en tiempo real" · app ↔ dashboard con haz animado
 export function ConnectedSection({
   id,
   text,

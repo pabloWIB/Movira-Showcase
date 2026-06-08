@@ -9,7 +9,6 @@ export type Surface = {
   video: string;
   poster: string;
   url?: string;
-  /** Mini-app a recrear: `true` para el teléfono (driver), o una clave Safari. */
   screen?: SafariScreenKey;
 };
 
@@ -19,8 +18,6 @@ function Mockup({ s }: { s: Surface }) {
   return <SafariFrame video={s.video} poster={s.poster} url={s.url} screen={s.screen} className="w-full" />;
 }
 
-// Slide 6 — dos navegadores conectados (despachos públicos ↔ admin interno)
-// El haz animado materializa "del cliente al conductor": el flujo entre ambos.
 export function SplitSection({
   id,
   text,
@@ -66,7 +63,6 @@ export function SplitSection({
             <Mockup s={right} />
           </div>
 
-          {/* Haz bidireccional monocromo entre ambos productos */}
           <AnimatedBeam
             containerRef={mockupRef}
             fromRef={leftRef}

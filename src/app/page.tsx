@@ -18,9 +18,8 @@ import { posterDataUri } from "@/lib/placeholder";
 gsap.registerPlugin(ScrollTrigger);
 
 const WHITE = "#FFFFFF";
-const GRAY = "#F4F4F5"; // gris suave para diferenciar secciones alternas
+const GRAY = "#F4F4F5";
 
-// ─── Placeholder posters (se ven dentro de los mockups hasta tener los .mp4) ──
 const P = {
   driver: posterDataUri({ label: "App Conductores", vertical: true }),
   driverOferta: posterDataUri({ label: "Oferta en vivo", vertical: true }),
@@ -32,7 +31,6 @@ const P = {
   admin: posterDataUri({ label: "Admin Movira" }),
 };
 
-// ─── La historia en 10 secciones — editar aquí = cambiar la historia ─────────
 type Slide =
   | { kind: "phoneHero"; id: string; text: string; bg: string; video: string; poster: string }
   | { kind: "connected"; id: string; text: string; bg: string; appVideo: string; appPoster: string; webVideo: string; webPoster: string; url?: string }
@@ -45,33 +43,24 @@ type Slide =
   | { kind: "cta"; id: string; text: string; video: string; poster: string; url?: string };
 
 const SLIDES: Slide[] = [
-  // 1 — Hero: la app de conductores (Android)
   { kind: "phoneHero", id: "mv-1", bg: WHITE, text: "Todo empezó con una app", video: "/videos/driver.mp4", poster: P.driver },
 
-  // 2 — Móvil ↔ Web conectados en tiempo real (haz animado)
   {
     kind: "connected", id: "mv-2", bg: GRAY, text: "Conectada en tiempo real", url: "empresas.movira.com.co",
     appVideo: "/videos/driver-oferta.mp4", appPoster: P.driverOferta,
     webVideo: "/videos/dashboard-orden.mp4", webPoster: P.dashboardOrden,
   },
 
-  // 3 — Dashboard modular: un módulo por servicio (arrastrables)
   { kind: "container", id: "mv-3", bg: WHITE, text: "Un módulo para cada servicio", video: "/videos/dashboard-tracking.mp4", poster: P.dashboardTracking },
 
-  // 4 — Web pública SEO (Safari)
-  { kind: "gig", id: "mv-4", bg: GRAY, text: "Una web que trae clientes", url: "movira.com.co", video: "/videos/web.mp4", poster: P.web, screen: "web" },
-
-  // 5 — Motor de precios con IA (Safari)
   { kind: "gig", id: "mv-5", bg: WHITE, text: "Precios dinámicos con IA", url: "despachos.movira.com.co", video: "/videos/cotizador-ia.mp4", poster: P.cotizadorIa, screen: "ia" },
 
-  // 6 — Despachos públicos + Admin (dos Safari)
   {
     kind: "split", id: "mv-6", bg: GRAY, text: "Del cliente al conductor, sin fricción",
     left: { kind: "safari", url: "despachos.movira.com.co", video: "/videos/despachos.mp4", poster: P.despachos, screen: "despachos" },
     right: { kind: "safari", url: "admin.movira.com.co", video: "/videos/admin.mp4", poster: P.admin, screen: "admin" },
   },
 
-  // 7 — El ecosistema completo
   {
     kind: "ecosystem", id: "mv-7", bg: WHITE, text: "",
     items: [
@@ -84,13 +73,10 @@ const SLIDES: Slide[] = [
     ],
   },
 
-  // 8 — Cómo se conecta el ecosistema (interactivo, draggable)
   { kind: "moduleflow", id: "mv-8", bg: GRAY, text: "Así se conecta todo" },
 
-  // 9 — Lo que ya tenemos (file-tree + stats)
   { kind: "techstack", id: "mv-9", bg: WHITE, text: "Lo que ya está en producción" },
 
-  // 10 — CTA final
   { kind: "cta", id: "mv-11", text: "La infraestructura logística de Colombia", url: "empresas.movira.com.co", video: "/videos/dashboard-tracking.mp4", poster: P.dashboardTracking },
 ];
 

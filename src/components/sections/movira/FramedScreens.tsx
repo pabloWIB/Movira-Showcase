@@ -21,17 +21,6 @@ import {
   Signal,
 } from "lucide-react";
 
-/**
- * Full-fidelity, non-interactive recreations of each Movira product's real
- * screen, used as the content inside the device frames (Android / Safari) across
- * the showcase. Designed once at a fixed "design resolution" and scaled to fill
- * whatever frame hosts them, so they stay crisp at any size.
- *
- * Tema blanco y negro premium: sin color, sin gradientes. La tinta (`INK`) es el
- * único acento; las jerarquías se logran con grises y peso, no con color.
- */
-
-// ── Scaler: render fixed-size content, scale-to-fill the parent (for browsers) ─
 function FittedScreen({ w, h, children }: { w: number; h: number; children: ReactNode }) {
   const ref = useRef<HTMLDivElement>(null);
   const [scale, setScale] = useState(0);
@@ -63,13 +52,10 @@ function FittedScreen({ w, h, children }: { w: number; h: number; children: Reac
   );
 }
 
-// Tinta única — reemplaza el navy/azul de marca por negro premium.
 const INK = "#0A0A0A";
 
-// Pill de estado monocromo (mismo gris para todos; el texto los diferencia).
 const STATUS_PILL = "bg-gray-100 text-gray-600 border-gray-200";
 
-// ── DRIVER (movira-app · Android, portrait 360×800) ─────────────────────────
 function Offer({
   ruta,
   km,
@@ -123,21 +109,18 @@ function Offer({
 export function DriverScreen() {
   return (
     <div className="flex h-[800px] w-[360px] flex-col bg-[#F9FAFB] font-sans">
-      {/* status bar */}
       <div className="flex items-center justify-between px-5 pt-3 pb-1 text-[12px] font-semibold text-gray-900">
         <span>9:41</span>
         <span className="flex items-center gap-1">
           <Signal size={13} /> <Wifi size={13} /> <BatteryFull size={15} />
         </span>
       </div>
-      {/* header */}
       <div className="flex items-center justify-between border-b border-gray-200 bg-white px-5 py-3">
         <span className="text-[18px] font-bold text-gray-900">Hola, Carlos 👋</span>
         <span className="flex items-center gap-1.5 rounded-full bg-gray-100 px-2.5 py-1 text-[12px] font-semibold text-gray-600">
           <span className="h-1.5 w-1.5 rounded-full bg-neutral-900" /> Disponible
         </span>
       </div>
-      {/* list */}
       <div className="flex flex-1 flex-col gap-3 overflow-hidden px-4 py-4">
         <p className="text-[13px] font-bold uppercase tracking-wide text-gray-400">
           Despachos disponibles
@@ -164,7 +147,6 @@ export function DriverScreen() {
           ganancia="$ 21.000"
         />
       </div>
-      {/* tab bar */}
       <div className="flex items-center justify-around border-t border-gray-200 bg-white px-4 py-2.5">
         {[
           { icon: Home, l: "Inicio", on: true },
@@ -186,7 +168,6 @@ export function DriverScreen() {
   );
 }
 
-// ── Shared browser-app chrome: a left sidebar for dashboard/admin ────────────
 function Sidebar({
   items,
 }: {
@@ -215,7 +196,6 @@ function Sidebar({
   );
 }
 
-// ── DASHBOARD (movira-dashboard · Safari) ───────────────────────────────────
 export function DashboardScreen() {
   const stats = [
     { v: "24", l: "Total órdenes" },
@@ -314,7 +294,6 @@ export function DashboardScreen() {
   );
 }
 
-// ── WEB (movira-web · Safari) ───────────────────────────────────────────────
 export function WebScreen() {
   return (
     <FittedScreen w={1200} h={700}>
@@ -393,7 +372,6 @@ export function WebScreen() {
   );
 }
 
-// ── MOTOR IA (movira-ai-backend · Safari) ───────────────────────────────────
 export function IaScreen() {
   const factors = [
     { n: "Clima", f: "× 1.05", d: "Lluvia ligera en Manizales" },
@@ -404,7 +382,6 @@ export function IaScreen() {
   return (
     <FittedScreen w={1200} h={700}>
       <div className="flex h-[700px] w-[1200px] bg-[#F9FAFB] font-sans text-gray-900">
-        {/* left form */}
         <div className="flex w-[420px] shrink-0 flex-col gap-4 border-r border-gray-200 bg-white p-8">
           <div className="flex items-center gap-2 text-[14px] font-bold text-gray-500">
             <Sparkles size={16} className="text-gray-900" /> Cotizador con IA
@@ -431,7 +408,6 @@ export function IaScreen() {
             </div>
           </div>
         </div>
-        {/* right result */}
         <div className="flex flex-1 flex-col gap-5 p-8">
           <div className="rounded-2xl p-6 text-white" style={{ background: INK }}>
             <p className="text-[14px] text-white/70">Precio dinámico estimado</p>
@@ -464,7 +440,6 @@ export function IaScreen() {
   );
 }
 
-// ── DESPACHOS (movira-despachos · Safari) ───────────────────────────────────
 export function DespachosScreen() {
   return (
     <FittedScreen w={1200} h={700}>
@@ -479,7 +454,6 @@ export function DespachosScreen() {
         </div>
         <div className="flex flex-1 gap-8 px-12 py-7">
           <div className="flex flex-1 flex-col gap-5">
-            {/* stepper */}
             <div className="flex items-center">
               {["Ruta", "Vehículo", "Detalles", "Enviar"].map((s, i) => (
                 <div key={s} className="flex flex-1 items-center last:flex-none">
@@ -531,7 +505,6 @@ export function DespachosScreen() {
               </div>
             </div>
           </div>
-          {/* map + price */}
           <div className="flex w-[380px] shrink-0 flex-col gap-4">
             <div
               className="relative flex-1 overflow-hidden rounded-2xl border border-gray-200"
@@ -560,7 +533,6 @@ export function DespachosScreen() {
   );
 }
 
-// ── ADMIN (movira-admin · Safari) ───────────────────────────────────────────
 export function AdminScreen() {
   const tabs = [
     { l: "Todas", n: "24", active: false },
@@ -644,7 +616,6 @@ export function AdminScreen() {
   );
 }
 
-// ── Registry: Safari (browser) screens keyed by id ──────────────────────────
 export type SafariScreenKey = "dashboard" | "web" | "ia" | "despachos" | "admin";
 
 export const SAFARI_SCREENS: Record<SafariScreenKey, () => ReactNode> = {

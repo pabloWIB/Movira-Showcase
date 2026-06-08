@@ -4,8 +4,6 @@ import { motion } from "motion/react";
 import { Navigation, Package, Sparkles } from "lucide-react";
 import { AccentTitle, ACCENT, FadeTop, montserrat } from "./shared";
 
-// Slide 3 — "Un módulo para cada servicio" · módulos arrastrables (drag & drop)
-// El usuario puede reorganizar los módulos del dashboard: cada uno = un servicio.
 export function ContainerSection({
   id,
   text,
@@ -34,7 +32,6 @@ export function ContainerSection({
           <AccentTitle text={text} />
         </div>
 
-        {/* Tablero — los módulos se mueven dentro de este área */}
         <div
           ref={boardRef}
           className="relative w-full h-[380px] md:h-[440px] rounded-3xl border border-[#EAEAEA]"
@@ -49,7 +46,6 @@ export function ContainerSection({
   );
 }
 
-// ─── Datos de los 3 módulos (uno por servicio) ───────────────────────────────
 type ModuleData = {
   title: string;
   tag: string;
@@ -111,7 +107,6 @@ const MODULES: ModuleData[] = [
   },
 ];
 
-// ─── Tarjeta-módulo arrastrable ──────────────────────────────────────────────
 function DraggableModule({
   module: m,
   index,

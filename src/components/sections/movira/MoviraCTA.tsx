@@ -6,7 +6,6 @@ import { ACCENT, FadeTop, SafariFrame, montserrat } from "./shared";
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Slide final — "La infraestructura logística de Colombia" · cierre navy
 export function MoviraCTA({
   id,
   text,

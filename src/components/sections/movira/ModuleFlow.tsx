@@ -25,7 +25,6 @@ const CARD_H = 88;
 const CANVAS_W = 880;
 const CANVAS_H = 460;
 
-// Snake flow (Repo → Process → Output), monocromo — sin propiedad de color.
 const MODULES: Module[] = [
   {
     id: "app-conductores",
@@ -86,7 +85,6 @@ const MODULES: Module[] = [
 const INITIAL_POSITIONS: Record<string, { x: number; y: number }> =
   Object.fromEntries(MODULES.map((m) => [m.id, { x: m.x, y: m.y }]));
 
-// Center-to-center bezier con manijas horizontales.
 function getBezierPath(
   from: { x: number; y: number },
   to: { x: number; y: number }
@@ -179,7 +177,6 @@ export function ModuleFlow({
           ))}
         </h2>
 
-        {/* Canvas */}
         <div
           ref={containerRef}
           className="relative mx-auto w-full overflow-hidden rounded-3xl border border-[#EAEAEA]"
@@ -189,7 +186,6 @@ export function ModuleFlow({
             backgroundColor: "#FFFFFF",
           }}
         >
-          {/* Conexiones — trazos bezier grises que siguen a las tarjetas */}
           <svg className="pointer-events-none absolute inset-0 h-full w-full">
             {connections.map((c) => {
               const active = dragging === c.from || dragging === c.to;
@@ -205,7 +201,6 @@ export function ModuleFlow({
             })}
           </svg>
 
-          {/* Tarjetas-módulo */}
           {MODULES.map((m) => {
             const pos = positions[m.id];
             const isDragging = dragging === m.id;

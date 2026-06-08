@@ -3,7 +3,6 @@ import { useRef } from "react";
 import { AccentTitle, FadeTop, SafariFrame, montserrat, useSlideEntrance } from "./shared";
 import type { SafariScreenKey } from "./FramedScreens";
 
-// Slides 4 & 5 — título + un navegador Safari (web SEO / cotizador IA)
 export function GigSection({
   id,
   text,

@@ -1,6 +1,3 @@
-// Inline SVG poster placeholders (data-URI) shown inside the device mockups
-// until the real screen recordings land in public/videos/.
-// When the real .mp4 is dropped in, the <video> plays on top and hides the poster.
 
 function escapeXml(s: string) {
   return s

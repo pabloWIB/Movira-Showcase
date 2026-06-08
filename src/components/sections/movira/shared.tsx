@@ -14,23 +14,14 @@ import {
 
 gsap.registerPlugin(ScrollTrigger);
 
-// ─── Movira design tokens ────────────────────────────────────────────────────
 export const montserrat = Montserrat({ subsets: ["latin"], weight: ["400", "500", "600", "700"] });
-// Tema blanco y negro premium — el acento es la tinta casi-negra; el de-énfasis
-// (palabras secundarias de los títulos) es un gris frío.
 export const ACCENT = "#0A0A0A";
 export const ACCENT_DARK = "#000000";
 export const MUTED = "#A1A1AA";
 export const TEXT_SIZE = "clamp(21px, 4.39vw, 47px)";
 
-// Mientras no existan los .mp4 en public/videos/ mostramos el poster navy.
-// Cuando los grabes y los dejes ahí, cambia esto a `true` y todo el showcase
-// pasa a reproducir los videos reales — un solo switch.
 export const SHOW_VIDEOS = false;
 
-// ─── Device frames (MagicUI) ─────────────────────────────────────────────────
-// Android = la app de conductores · Safari = todo lo web.
-// Prioridad: video (cuando SHOW_VIDEOS) → mini-app en vivo (`screen`) → poster.
 export function AndroidFrame({
   video,
   poster,
@@ -39,7 +30,6 @@ export function AndroidFrame({
 }: {
   video: string;
   poster: string;
-  /** Muestra la app de conductores recreada dentro del teléfono. */
   screen?: boolean;
   className?: string;
 }) {
@@ -60,7 +50,6 @@ export function SafariFrame({
   video: string;
   poster: string;
   url?: string;
-  /** Clave de la mini-app a recrear dentro del navegador. */
   screen?: SafariScreenKey;
   className?: string;
 }) {
@@ -73,7 +62,6 @@ export function SafariFrame({
   return <Safari imageSrc={poster} url={url} className={cn("w-full", className)} />;
 }
 
-// ─── Title — last word painted in the navy accent ────────────────────────────
 export function AccentTitle({
   text,
   className = "",
@@ -107,7 +95,6 @@ export function AccentTitle({
   );
 }
 
-// ─── Top fade — softens the seam between stacked slides ──────────────────────
 export function FadeTop({ bg }: { bg: string }) {
   return (
     <div
@@ -120,7 +107,6 @@ export function FadeTop({ bg }: { bg: string }) {
   );
 }
 
-// ─── Standard entrance: mockup scales in (titles render statically) ──────────
 export function useSlideEntrance(
   sectionRef: RefObject<HTMLElement | null>,
   mockupRef: RefObject<HTMLElement | null> | null
@@ -146,6 +132,5 @@ export function useSlideEntrance(
         },
       }
     );
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 }

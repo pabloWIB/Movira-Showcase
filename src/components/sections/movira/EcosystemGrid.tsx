@@ -10,22 +10,19 @@ export type EcosystemItem = {
   url?: string;
   video: string;
   poster: string;
-  /** Mini-app a recrear dentro del marco (Safari). El teléfono usa la app driver. */
   screen?: SafariScreenKey;
 };
 
 const CANVAS_H = 560;
 
-// Caja del nodo (ancho fijo para que quepa el label y el conector caiga centrado).
-const CENTER_BOX = { w: 150, h: 224 }; // teléfono + label
-const SPOKE_BOX = { w: 150, h: 112 }; // navegador + label
-// Centros radiales de los 5 satélites como fracción del lienzo.
+const CENTER_BOX = { w: 150, h: 224 };
+const SPOKE_BOX = { w: 150, h: 112 };
 const SPOKE_FRACS = [
-  { l: 0.5, t: 0.13 }, // arriba
-  { l: 0.85, t: 0.4 }, // arriba-derecha
-  { l: 0.72, t: 0.84 }, // abajo-derecha
-  { l: 0.28, t: 0.84 }, // abajo-izquierda
-  { l: 0.15, t: 0.4 }, // arriba-izquierda
+  { l: 0.5, t: 0.13 },
+  { l: 0.85, t: 0.4 },
+  { l: 0.72, t: 0.84 },
+  { l: 0.28, t: 0.84 },
+  { l: 0.15, t: 0.4 },
 ];
 
 type Box = { w: number; h: number };
@@ -34,7 +31,6 @@ type NodeDef = { id: string; item: EcosystemItem; box: Box; frac: { l: number; t
 
 const clamp = (v: number, min: number, max: number) => Math.min(Math.max(v, min), max);
 
-// Cubic bézier con manijas horizontales (mismo trazo que ModuleFlow / "Así se conecta todo").
 function bez(a: Pos, b: Pos): string {
   const dx = Math.max(40, Math.abs(b.x - a.x) * 0.5);
   return `M ${a.x} ${a.y} C ${a.x + dx} ${a.y}, ${b.x - dx} ${b.y}, ${b.x} ${b.y}`;
@@ -59,7 +55,6 @@ function Label({ children }: { children: ReactNode }) {
   );
 }
 
-// Slide 7 — "6 productos, una plataforma" · hub radial draggable (como ModuleFlow)
 export function EcosystemGrid({
   id,
   text,
@@ -76,7 +71,6 @@ export function EcosystemGrid({
   const sectionRef = useRef<HTMLElement>(null);
   const canvasRef = useRef<HTMLDivElement>(null);
 
-  // Centro = app de conductores; el resto orbita y se conecta a él.
   const center = items.find((i) => i.kind === "android") ?? items[0];
   const spokes = items.filter((i) => i !== center).slice(0, 5);
   const nodes: NodeDef[] = [
@@ -93,7 +87,6 @@ export function EcosystemGrid({
   const [canvasW, setCanvasW] = useState(0);
   const offset = useRef<Pos>({ x: 0, y: 0 });
 
-  // Track canvas width → recenter the radial layout (coarse buckets avoid churn).
   useEffect(() => {
     const el = canvasRef.current;
     if (!el) return;
@@ -109,7 +102,6 @@ export function EcosystemGrid({
     const el = canvasRef.current;
     if (!el || !el.clientWidth) return;
     setPositions(computeLayout(el.clientWidth, CANVAS_H));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [layoutKey]);
 
   const handlePointerDown = (e: ReactPointerEvent<HTMLDivElement>, nid: string) => {
@@ -160,7 +152,6 @@ export function EcosystemGrid({
           Arrastra los productos — las conexiones se recalculan en vivo.
         </p>
 
-        {/* ── Desktop: lienzo draggable con conectores en vivo ── */}
         <div
           ref={canvasRef}
           className="relative mx-auto hidden w-full max-w-[980px] overflow-hidden rounded-3xl border border-[#EAEAEA] md:block"
@@ -171,7 +162,6 @@ export function EcosystemGrid({
             backgroundSize: "22px 22px",
           }}
         >
-          {/* conectores — del centro a cada satélite, recalculados al arrastrar */}
           <svg className="pointer-events-none absolute inset-0 h-full w-full">
             {connections.map((c) => (
               <path
@@ -201,7 +191,6 @@ export function EcosystemGrid({
           ))}
         </div>
 
-        {/* ── Móvil: grid simple (sin arrastre) ── */}
         <div className="grid grid-cols-2 gap-5 md:hidden">
           {items.map((item) => (
             <div key={item.id} className="flex flex-col items-center justify-end">

@@ -9,7 +9,6 @@ import { ACCENT, AccentTitle, FadeTop, montserrat } from "./shared";
 
 gsap.registerPlugin(ScrollTrigger);
 
-// El ecosistema real de repos en producción
 const ELEMENTS: TreeViewElement[] = [
   {
     id: "movira",
@@ -48,7 +47,6 @@ const STATS = [
   { value: 1, label: "única plataforma" },
 ];
 
-// Sección "Lo que ya tenemos" · file-tree del ecosistema + stats animadas
 export function TechStackSection({
   id,
   text,
@@ -104,7 +102,6 @@ export function TechStackSection({
         </p>
 
         <div ref={bodyRef} className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
-          {/* File tree del ecosistema */}
           <div
             className="h-[320px] md:h-[360px] rounded-2xl border border-[#E5E5E5] bg-white p-3"
             style={{ boxShadow: "0 10px 40px rgba(0,0,0,0.06)" }}
@@ -117,7 +114,6 @@ export function TechStackSection({
             />
           </div>
 
-          {/* Stats animadas */}
           <div className="grid grid-cols-2 gap-4 md:gap-6">
             {STATS.map((stat) => (
               <div key={stat.label} className="flex flex-col items-center text-center gap-2">
