@@ -11,7 +11,6 @@ import { EcosystemGrid, EcosystemItem } from "@/components/sections/movira/Ecosy
 import type { SafariScreenKey } from "@/components/sections/movira/FramedScreens";
 import { ModuleFlow } from "@/components/sections/movira/ModuleFlow";
 import { TechStackSection } from "@/components/sections/movira/TechStackSection";
-import { MoviraCTA } from "@/components/sections/movira/MoviraCTA";
 import { montserrat } from "@/components/sections/movira/shared";
 import { posterDataUri } from "@/lib/placeholder";
 
@@ -39,8 +38,7 @@ type Slide =
   | { kind: "split"; id: string; text: string; bg: string; left: Surface; right: Surface }
   | { kind: "ecosystem"; id: string; text: string; bg: string; items: EcosystemItem[] }
   | { kind: "moduleflow"; id: string; text: string; bg: string }
-  | { kind: "techstack"; id: string; text: string; bg: string }
-  | { kind: "cta"; id: string; text: string; video: string; poster: string; url?: string };
+  | { kind: "techstack"; id: string; text: string; bg: string };
 
 const SLIDES: Slide[] = [
   { kind: "phoneHero", id: "mv-1", bg: WHITE, text: "Todo empezó con una app", video: "/videos/driver.mp4", poster: P.driver },
