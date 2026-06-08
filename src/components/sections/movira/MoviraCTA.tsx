@@ -63,20 +63,18 @@ export function MoviraCTA({
         <div ref={mockupRef} className="mb-10 md:mb-14 flex justify-center">
           <SafariFrame video={video} poster={poster} url={url} screen="dashboard" className="w-full md:w-[72%]" />
         </div>
-        {text && (
-          <h2
-            style={{
-              fontSize: "clamp(20px, 3.9vw, 42px)",
-              fontWeight: 600,
-              lineHeight: 1.12,
-              letterSpacing: "-0.03em",
-              color: "#A1A1AA",
-            }}
-            ref={textRef}
-          >
-            {words.join(" ")} <span style={{ color: ACCENT }}>{last}</span>
-          </h2>
-        )}
+        <h2
+          style={{
+            fontSize: "clamp(20px, 3.9vw, 42px)",
+            fontWeight: 600,
+            lineHeight: 1.12,
+            letterSpacing: "-0.03em",
+            color: "#A1A1AA",
+          }}
+          ref={textRef}
+        >
+          {words.join(" ")} <span style={{ color: ACCENT }}>{last}</span>
+        </h2>
       </div>
     </section>
   );
