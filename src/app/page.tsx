@@ -77,7 +77,7 @@ const SLIDES: Slide[] = [
 
   { kind: "techstack", id: "mv-9", bg: WHITE, text: "Lo que ya está en producción" },
 
-  { kind: "cta", id: "mv-11", text: "La infraestructura logística de Colombia", url: "empresas.movira.com.co", video: "/videos/dashboard-tracking.mp4", poster: P.dashboardTracking },
+  { kind: "cta", id: "mv-11", text: "", url: "empresas.movira.com.co", video: "/videos/dashboard-tracking.mp4", poster: P.dashboardTracking },
 ];
 
 const ALL_IDS = SLIDES.map((s) => s.id);
