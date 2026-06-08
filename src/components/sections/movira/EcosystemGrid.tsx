@@ -148,10 +148,6 @@ export function EcosystemGrid({
             <AccentTitle text={text} />
           </div>
         )}
-        <p className="mb-8 mt-3 hidden text-center text-sm text-[#A1A1AA] md:mb-10 md:block md:text-base">
-          Arrastra los productos — las conexiones se recalculan en vivo.
-        </p>
-
         <div
           ref={canvasRef}
           className="relative mx-auto hidden w-full max-w-[980px] overflow-hidden rounded-3xl border border-[#EAEAEA] md:block"
