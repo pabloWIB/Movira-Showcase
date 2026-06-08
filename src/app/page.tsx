@@ -54,12 +54,6 @@ const SLIDES: Slide[] = [
   { kind: "gig", id: "mv-5", bg: WHITE, text: "Precios dinámicos con IA", url: "despachos.movira.com.co", video: "/videos/cotizador-ia.mp4", poster: P.cotizadorIa, screen: "ia" },
 
   {
-    kind: "split", id: "mv-6", bg: GRAY, text: "Del cliente al conductor, sin fricción",
-    left: { kind: "safari", url: "despachos.movira.com.co", video: "/videos/despachos.mp4", poster: P.despachos, screen: "despachos" },
-    right: { kind: "safari", url: "admin.movira.com.co", video: "/videos/admin.mp4", poster: P.admin, screen: "admin" },
-  },
-
-  {
     kind: "ecosystem", id: "mv-7", bg: WHITE, text: "",
     items: [
       { id: "eco-driver", kind: "android", label: "App Conductores", video: "/videos/driver.mp4", poster: P.driver },
