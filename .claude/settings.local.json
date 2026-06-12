@@ -17,7 +17,12 @@
       "Bash(node strip-comments.cjs)",
       "Bash(echo \"EXIT: $?\")",
       "Bash(node -e \"const ts=require\\('typescript'\\); console.log\\('resolve:', require.resolve\\('typescript'\\)\\); console.log\\('version:', ts.version\\); console.log\\('isJsxExpressionContainer:', typeof ts.isJsxExpressionContainer\\); console.log\\('getChildren on sf works:'\\); const sf=ts.createSourceFile\\('a.tsx','const x=1; // hi\\\\n<div>{/* c */}</div>',ts.ScriptTarget.Latest,true,ts.ScriptKind.TSX\\); console.log\\('children count:', sf.getChildren\\(\\).length\\); console.log\\('forEachChild kinds:'\\); ts.forEachChild\\(sf,n=>console.log\\('  ',ts.SyntaxKind[n.kind]\\)\\);\")",
-      "Bash(node -e ' *)"
+      "Bash(node -e ' *)",
+      "Bash(node_modules/.bin/tsc --noEmit)",
+      "Bash(./node_modules/.bin/tsc --noEmit)",
+      "Bash(echo \"TSC_EXIT=$?\")",
+      "Bash(npm run *)",
+      "Bash(grep -iE \"sidebar-navigation|MiCuentaTab|configuracion|dashboard.layout|app\\\\\\\\\\\\\\\\dashboard\\\\\\\\\\\\\\\\layout|dashboard/layout\")"
     ]
   }
 }
