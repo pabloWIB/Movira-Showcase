@@ -16,15 +16,11 @@ type SafariMode = "default" | "simple"
 
 export interface SafariProps extends HTMLAttributes<HTMLDivElement> {
   url?: string
-  imageSrc?: string
-  videoSrc?: string
   screen?: ReactNode
   mode?: SafariMode
 }
 
 export function Safari({
-  imageSrc,
-  videoSrc,
   screen,
   url,
   mode = "default",
@@ -32,8 +28,7 @@ export function Safari({
   style,
   ...props
 }: SafariProps) {
-  const hasVideo = !!videoSrc
-  const hasMedia = hasVideo || !!imageSrc || !!screen
+  const hasMedia = !!screen
 
   return (
     <div
@@ -44,48 +39,7 @@ export function Safari({
       }}
       {...props}
     >
-      {hasVideo && (
-        <div
-          className="pointer-events-none absolute z-0 overflow-hidden"
-          style={{
-            left: `${LEFT_PCT}%`,
-            top: `${TOP_PCT}%`,
-            width: `${WIDTH_PCT}%`,
-            height: `${HEIGHT_PCT}%`,
-          }}
-        >
-          <video
-            className="block size-full object-cover"
-            src={videoSrc}
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="metadata"
-          />
-        </div>
-      )}
-
-      {!hasVideo && imageSrc && (
-        <div
-          className="pointer-events-none absolute z-0 overflow-hidden"
-          style={{
-            left: `${LEFT_PCT}%`,
-            top: `${TOP_PCT}%`,
-            width: `${WIDTH_PCT}%`,
-            height: `${HEIGHT_PCT}%`,
-            borderRadius: "0 0 11px 11px",
-          }}
-        >
-          <img
-            src={imageSrc}
-            alt=""
-            className="block size-full object-cover object-top"
-          />
-        </div>
-      )}
-
-      {!hasVideo && !imageSrc && screen && (
+      {screen && (
         <div
           className="pointer-events-none absolute z-0 overflow-hidden"
           style={{

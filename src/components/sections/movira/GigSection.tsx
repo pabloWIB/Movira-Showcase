@@ -6,21 +6,17 @@ import type { SafariScreenKey } from "./FramedScreens";
 export function GigSection({
   id,
   text,
-  video,
   bg,
   zIndex,
   url,
-  poster,
   screen,
 }: {
   id: string;
   text: string;
-  video: string;
   bg: string;
   zIndex: number;
   url?: string;
-  poster: string;
-  screen?: SafariScreenKey;
+  screen: SafariScreenKey;
 }) {
   const sectionRef = useRef<HTMLElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
@@ -40,7 +36,7 @@ export function GigSection({
           <AccentTitle text={text} />
         </div>
         <div ref={mockupRef} className="w-full flex justify-center">
-          <SafariFrame video={video} poster={poster} url={url} screen={screen} className="w-full md:w-[82%]" />
+          <SafariFrame url={url} screen={screen} className="w-full md:w-[82%]" />
         </div>
       </div>
     </section>

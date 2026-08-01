@@ -12,10 +12,8 @@ export function ContainerSection({
 }: {
   id: string;
   text: string;
-  video: string;
   bg: string;
   zIndex: number;
-  poster?: string;
 }) {
   const boardRef = useRef<HTMLDivElement>(null);
 
@@ -34,7 +32,7 @@ export function ContainerSection({
 
         <div
           ref={boardRef}
-          className="relative w-full h-[380px] md:h-[440px] rounded-3xl border border-[#EAEAEA]"
+          className="relative w-full h-[380px] md:h-[440px] overflow-hidden rounded-3xl border border-[#EAEAEA]"
           style={{ backgroundColor: "#FAFAFA" }}
         >
           {MODULES.map((m, i) => (
@@ -51,6 +49,8 @@ type ModuleData = {
   tag: string;
   icon: React.ComponentType<{ size?: number; strokeWidth?: number }>;
   body: React.ReactNode;
+  /* `left` is a percentage of the board, so it has to leave room for the card's
+     own width: the card is ~48% of the board at 360px and ~31% from `md` up. */
   pos: { left: string; top: string };
   rotate: number;
 };
@@ -61,7 +61,7 @@ const MODULES: ModuleData[] = [
     tag: "Operación",
     icon: Navigation,
     rotate: -5,
-    pos: { left: "4%", top: "10%" },
+    pos: { left: "3%", top: "8%" },
     body: (
       <div className="flex items-center gap-2">
         <span className="relative flex h-2.5 w-2.5">
@@ -78,7 +78,7 @@ const MODULES: ModuleData[] = [
     tag: "Órdenes",
     icon: Package,
     rotate: 4,
-    pos: { left: "52%", top: "6%" },
+    pos: { left: "45%", top: "6%" },
     body: (
       <div className="flex items-end gap-1.5">
         {[40, 70, 45, 90, 60, 80].map((h, i) => (
@@ -97,7 +97,7 @@ const MODULES: ModuleData[] = [
     tag: "Cotizador",
     icon: Sparkles,
     rotate: -2,
-    pos: { left: "28%", top: "52%" },
+    pos: { left: "24%", top: "54%" },
     body: (
       <div>
         <div className="text-2xl font-semibold text-neutral-900">$ 1.250.000</div>
@@ -129,7 +129,7 @@ function DraggableModule({
       transition={{ delay: 0.15 + index * 0.12, type: "spring", stiffness: 220, damping: 20 }}
       whileHover={{ scale: 1.03, rotate: 0 }}
       whileDrag={{ scale: 1.06, rotate: 0, zIndex: 50, cursor: "grabbing" }}
-      className="absolute w-[190px] md:w-[230px] cursor-grab select-none rounded-2xl border border-[#E5E5E5] bg-white p-4 shadow-[0_8px_30px_rgba(0,0,0,0.08)]"
+      className="absolute w-[150px] sm:w-[190px] md:w-[230px] cursor-grab select-none rounded-2xl border border-[#E5E5E5] bg-white p-4 shadow-[0_8px_30px_rgba(0,0,0,0.08)]"
       style={{ left: m.pos.left, top: m.pos.top }}
     >
       <div className="mb-3 flex items-center justify-between">

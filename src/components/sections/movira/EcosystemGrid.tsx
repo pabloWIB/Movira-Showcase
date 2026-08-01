@@ -1,17 +1,19 @@
 "use client";
-import { useEffect, useRef, useState, type ReactNode, type PointerEvent as ReactPointerEvent } from "react";
+import {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type ReactNode,
+  type PointerEvent as ReactPointerEvent,
+} from "react";
 import { AccentTitle, AndroidFrame, FadeTop, SafariFrame, montserrat } from "./shared";
 import type { SafariScreenKey } from "./FramedScreens";
 
-export type EcosystemItem = {
-  id: string;
-  kind: "android" | "safari";
-  label: string;
-  url?: string;
-  video: string;
-  poster: string;
-  screen?: SafariScreenKey;
-};
+export type EcosystemItem =
+  | { id: string; kind: "android"; label: string; url?: undefined; screen?: undefined }
+  | { id: string; kind: "safari"; label: string; url?: string; screen: SafariScreenKey };
 
 const CANVAS_H = 560;
 
@@ -38,9 +40,9 @@ function bez(a: Pos, b: Pos): string {
 
 function Mockup({ item, w }: { item: EcosystemItem; w: string }) {
   return item.kind === "android" ? (
-    <AndroidFrame video={item.video} poster={item.poster} screen className={w} />
+    <AndroidFrame className={w} />
   ) : (
-    <SafariFrame video={item.video} poster={item.poster} url={item.url} screen={item.screen} className="w-full" />
+    <SafariFrame url={item.url} screen={item.screen} className="w-full" />
   );
 }
 
@@ -71,16 +73,31 @@ export function EcosystemGrid({
   const sectionRef = useRef<HTMLElement>(null);
   const canvasRef = useRef<HTMLDivElement>(null);
 
-  const center = items.find((i) => i.kind === "android") ?? items[0];
-  const spokes = items.filter((i) => i !== center).slice(0, 5);
-  const nodes: NodeDef[] = [
-    { id: center.id, item: center, box: CENTER_BOX, frac: { l: 0.5, t: 0.5 }, isCenter: true },
-    ...spokes.map((item, i) => ({ id: item.id, item, box: SPOKE_BOX, frac: SPOKE_FRACS[i], isCenter: false })),
-  ];
-  const boxOf = (nid: string) => nodes.find((n) => n.id === nid)!.box;
+  const { nodes, centerId, spokeIds } = useMemo(() => {
+    const center = items.find((i) => i.kind === "android") ?? items[0];
+    const spokes = items.filter((i) => i !== center).slice(0, SPOKE_FRACS.length);
+    return {
+      nodes: [
+        { id: center.id, item: center, box: CENTER_BOX, frac: { l: 0.5, t: 0.5 }, isCenter: true },
+        ...spokes.map((item, i) => ({ id: item.id, item, box: SPOKE_BOX, frac: SPOKE_FRACS[i], isCenter: false })),
+      ] as NodeDef[],
+      centerId: center.id,
+      spokeIds: spokes.map((s) => s.id),
+    };
+  }, [items]);
 
-  const computeLayout = (w: number, h: number): Record<string, Pos> =>
-    Object.fromEntries(nodes.map((n) => [n.id, { x: n.frac.l * w - n.box.w / 2, y: n.frac.t * h - n.box.h / 2 }]));
+  const boxOf = useCallback(
+    (nid: string) => nodes.find((n) => n.id === nid)!.box,
+    [nodes]
+  );
+
+  const computeLayout = useCallback(
+    (w: number, h: number): Record<string, Pos> =>
+      Object.fromEntries(
+        nodes.map((n) => [n.id, { x: n.frac.l * w - n.box.w / 2, y: n.frac.t * h - n.box.h / 2 }])
+      ),
+    [nodes]
+  );
 
   const [positions, setPositions] = useState<Record<string, Pos>>(() => computeLayout(960, CANVAS_H));
   const [dragging, setDragging] = useState<string | null>(null);
@@ -97,12 +114,13 @@ export function EcosystemGrid({
     return () => ro.disconnect();
   }, []);
 
+  /* Bucketed so a one-pixel resize does not reset a node the user just dragged. */
   const layoutKey = Math.round(canvasW / 60);
   useEffect(() => {
     const el = canvasRef.current;
     if (!el || !el.clientWidth) return;
     setPositions(computeLayout(el.clientWidth, CANVAS_H));
-  }, [layoutKey]);
+  }, [layoutKey, computeLayout]);
 
   const handlePointerDown = (e: ReactPointerEvent<HTMLDivElement>, nid: string) => {
     const rect = canvasRef.current?.getBoundingClientRect();
@@ -128,10 +146,10 @@ export function EcosystemGrid({
     const b = boxOf(nid);
     return { x: p.x + b.w / 2, y: p.y + b.h / 2 };
   };
-  const connections = spokes.map((s) => ({
-    id: s.id,
-    d: bez(centerOf(center.id), centerOf(s.id)),
-    active: dragging === center.id || dragging === s.id,
+  const connections = spokeIds.map((sid) => ({
+    id: sid,
+    d: bez(centerOf(centerId), centerOf(sid)),
+    active: dragging === centerId || dragging === sid,
   }));
 
   return (

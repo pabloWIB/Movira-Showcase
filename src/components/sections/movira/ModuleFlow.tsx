@@ -85,6 +85,21 @@ const MODULES: Module[] = [
 const INITIAL_POSITIONS: Record<string, { x: number; y: number }> =
   Object.fromEntries(MODULES.map((m) => [m.id, { x: m.x, y: m.y }]));
 
+function ModuleCard({ module: m }: { module: Module }) {
+  const Icon = m.icon;
+  return (
+    <div className="rounded-2xl border border-[#E5E5E5] bg-white p-3.5 shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
+      <div className="flex items-center gap-2.5">
+        <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[#E5E5E5] bg-[#F5F5F5]">
+          <Icon size={16} className="text-neutral-500" />
+        </span>
+        <span className="text-sm font-semibold text-neutral-900">{m.title}</span>
+      </div>
+      <p className="mt-2 text-xs leading-snug text-neutral-500">{m.description}</p>
+    </div>
+  );
+}
+
 function getBezierPath(
   from: { x: number; y: number },
   to: { x: number; y: number }
@@ -169,7 +184,7 @@ export function ModuleFlow({
           {words.map((w, i, arr) => (
             <span
               key={i}
-              className={i === arr.length - 1 ? "text-[#0A0A0A]" : "text-[#A1A1AA]"}
+              className={i === arr.length - 1 ? "text-[#0A0A0A]" : "text-[#71717A]"}
             >
               {w}
               {i < arr.length - 1 ? " " : ""}
@@ -177,9 +192,18 @@ export function ModuleFlow({
           ))}
         </h2>
 
+        {/* The canvas positions cards at fixed pixel offsets on an 880px board,
+            so it only fits from `lg` up. Below that the same modules render as
+            a plain grid — otherwise four of the six sit outside the clip. */}
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:hidden">
+          {MODULES.map((m) => (
+            <ModuleCard key={m.id} module={m} />
+          ))}
+        </div>
+
         <div
           ref={containerRef}
-          className="relative mx-auto w-full overflow-hidden rounded-3xl border border-[#EAEAEA]"
+          className="relative mx-auto hidden w-full overflow-hidden rounded-3xl border border-[#EAEAEA] lg:block"
           style={{
             maxWidth: CANVAS_W,
             height: CANVAS_H,

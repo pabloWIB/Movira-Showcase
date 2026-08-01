@@ -14,52 +14,42 @@ import {
 
 gsap.registerPlugin(ScrollTrigger);
 
-export const montserrat = Montserrat({ subsets: ["latin"], weight: ["400", "500", "600", "700"] });
+export const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+});
 export const ACCENT = "#0A0A0A";
-export const ACCENT_DARK = "#000000";
-export const MUTED = "#A1A1AA";
+export const MUTED = "#71717A";
 export const TEXT_SIZE = "clamp(21px, 4.39vw, 47px)";
 
-export const SHOW_VIDEOS = false;
+/* The device frames wrap a hand-built JSX screen, not a screenshot or a video.
+   They are decorative illustrations of the product, so the frame is hidden from
+   assistive tech and the section's own heading carries the meaning. */
 
-export function AndroidFrame({
-  video,
-  poster,
-  screen,
-  className,
-}: {
-  video: string;
-  poster: string;
-  screen?: boolean;
-  className?: string;
-}) {
-  if (SHOW_VIDEOS)
-    return <Android videoSrc={video} className={cn("h-auto w-[240px]", className)} />;
-  if (screen)
-    return <Android screen={<DriverScreen />} className={cn("h-auto w-[240px]", className)} />;
-  return <Android src={poster} className={cn("h-auto w-[240px]", className)} />;
+export function AndroidFrame({ className }: { className?: string }) {
+  return (
+    <div aria-hidden="true">
+      <Android screen={<DriverScreen />} className={cn("h-auto w-[240px]", className)} />
+    </div>
+  );
 }
 
 export function SafariFrame({
-  video,
-  poster,
   url,
   screen,
   className,
 }: {
-  video: string;
-  poster: string;
   url?: string;
-  screen?: SafariScreenKey;
+  screen: SafariScreenKey;
   className?: string;
 }) {
-  if (SHOW_VIDEOS)
-    return <Safari videoSrc={video} url={url} className={cn("w-full", className)} />;
-  if (screen) {
-    const Screen = SAFARI_SCREENS[screen];
-    return <Safari screen={<Screen />} url={url} className={cn("w-full", className)} />;
-  }
-  return <Safari imageSrc={poster} url={url} className={cn("w-full", className)} />;
+  const Screen = SAFARI_SCREENS[screen];
+  return (
+    <div aria-hidden="true">
+      <Safari screen={<Screen />} url={url} className={cn("w-full", className)} />
+    </div>
+  );
 }
 
 export function AccentTitle({
@@ -132,5 +122,5 @@ export function useSlideEntrance(
         },
       }
     );
-  }, []);
+  }, [sectionRef, mockupRef]);
 }

@@ -226,7 +226,7 @@ export function DashboardScreen() {
         <div className="flex flex-1 flex-col gap-6 overflow-hidden p-8">
           <div className="flex items-start justify-between">
             <div>
-              <h1 className="text-[26px] font-bold text-gray-900">Dashboard</h1>
+              <p className="text-[26px] font-bold text-gray-900">Dashboard</p>
               <p className="text-[14px] text-gray-500">Logística Andina S.A.S</p>
             </div>
             <span
@@ -321,9 +321,9 @@ export function WebScreen() {
             <span className="inline-block rounded-full bg-black/5 px-3 py-1 text-[13px] font-semibold" style={{ color: INK }}>
               Logística inteligente · Colombia
             </span>
-            <h1 className="mt-5 text-[52px] font-bold leading-[1.05] tracking-tight text-gray-900">
+            <p className="mt-5 text-[52px] font-bold leading-[1.05] tracking-tight text-gray-900">
               La plataforma logística de <span style={{ color: INK }}>Colombia</span>
-            </h1>
+            </p>
             <p className="mt-5 max-w-[440px] text-[17px] leading-relaxed text-gray-500">
               Conecta tu operación con conductores verificados. Asigna cargas, rastrea
               envíos y gestiona entregas en tiempo real desde un solo lugar.
@@ -338,9 +338,9 @@ export function WebScreen() {
             </div>
             <div className="mt-9 flex gap-9">
               {[
-                ["+1.200", "envíos / mes"],
-                ["4.8★", "47 reseñas"],
-                ["6", "ciudades"],
+                ["Órdenes", "en tiempo real"],
+                ["Conductores", "verificados"],
+                ["Precios", "calculados con IA"],
               ].map(([n, l]) => (
                 <div key={l}>
                   <p className="text-[24px] font-bold text-gray-900">{n}</p>
@@ -445,9 +445,9 @@ export function DespachosScreen() {
     <FittedScreen w={1200} h={700}>
       <div className="flex h-[700px] w-[1200px] flex-col bg-white font-sans">
         <div className="px-12 pt-9">
-          <h1 className="text-[32px] font-bold tracking-tight text-gray-900">
+          <p className="text-[32px] font-bold tracking-tight text-gray-900">
             Solicita tu despacho
-          </h1>
+          </p>
           <p className="mt-1.5 text-[15px] text-gray-500">
             Cuéntanos qué necesitas mover en Manizales. Sin registros previos.
           </p>
@@ -560,7 +560,7 @@ export function AdminScreen() {
         />
         <div className="flex flex-1 flex-col gap-5 overflow-hidden p-8">
           <div>
-            <h1 className="text-[24px] font-bold text-gray-900">Solicitudes</h1>
+            <p className="text-[24px] font-bold text-gray-900">Solicitudes</p>
             <p className="text-[14px] text-gray-500">Solicitudes públicas de despacho · despachos.movira.com.co</p>
           </div>
           <div className="grid grid-cols-4 gap-3">

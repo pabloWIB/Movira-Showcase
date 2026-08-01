@@ -1,10 +1,10 @@
 "use client";
 import { useEffect, useCallback } from "react";
+import { useLenis } from "lenis/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { PhoneHero } from "@/components/sections/movira/PhoneHero";
 import { ConnectedSection } from "@/components/sections/movira/ConnectedSection";
-import { SplitSection, Surface } from "@/components/sections/movira/SplitSection";
 import { ContainerSection } from "@/components/sections/movira/ContainerSection";
 import { GigSection } from "@/components/sections/movira/GigSection";
 import { EcosystemGrid, EcosystemItem } from "@/components/sections/movira/EcosystemGrid";
@@ -12,80 +12,61 @@ import type { SafariScreenKey } from "@/components/sections/movira/FramedScreens
 import { ModuleFlow } from "@/components/sections/movira/ModuleFlow";
 import { TechStackSection } from "@/components/sections/movira/TechStackSection";
 import { montserrat } from "@/components/sections/movira/shared";
-import { posterDataUri } from "@/lib/placeholder";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const WHITE = "#FFFFFF";
 const GRAY = "#F4F4F5";
 
-const P = {
-  driver: posterDataUri({ label: "App Conductores", vertical: true }),
-  driverOferta: posterDataUri({ label: "Oferta en vivo", vertical: true }),
-  dashboardOrden: posterDataUri({ label: "Crear orden" }),
-  dashboardTracking: posterDataUri({ label: "Tracking en vivo" }),
-  web: posterDataUri({ label: "movira.com.co" }),
-  cotizadorIa: posterDataUri({ label: "Cotizador IA" }),
-  despachos: posterDataUri({ label: "Despachos públicos" }),
-  admin: posterDataUri({ label: "Admin Movira" }),
-};
-
 type Slide =
-  | { kind: "phoneHero"; id: string; text: string; bg: string; video: string; poster: string }
-  | { kind: "connected"; id: string; text: string; bg: string; appVideo: string; appPoster: string; webVideo: string; webPoster: string; url?: string }
-  | { kind: "container"; id: string; text: string; bg: string; video: string; poster: string }
-  | { kind: "gig"; id: string; text: string; bg: string; video: string; poster: string; url?: string; screen?: SafariScreenKey }
-  | { kind: "split"; id: string; text: string; bg: string; left: Surface; right: Surface }
+  | { kind: "phoneHero"; id: string; text: string; bg: string }
+  | { kind: "connected"; id: string; text: string; bg: string; url?: string }
+  | { kind: "container"; id: string; text: string; bg: string }
+  | { kind: "gig"; id: string; text: string; bg: string; screen: SafariScreenKey; url?: string }
   | { kind: "ecosystem"; id: string; text: string; bg: string; items: EcosystemItem[] }
   | { kind: "moduleflow"; id: string; text: string; bg: string }
   | { kind: "techstack"; id: string; text: string; bg: string };
 
 const SLIDES: Slide[] = [
-  { kind: "phoneHero", id: "mv-1", bg: WHITE, text: "Todo empezó con una app", video: "/videos/driver.mp4", poster: P.driver },
+  { kind: "phoneHero", id: "mv-1", bg: WHITE, text: "Todo empezó con una app" },
+
+  { kind: "connected", id: "mv-2", bg: GRAY, text: "Conectada en tiempo real", url: "empresas.movira.com.co" },
+
+  { kind: "container", id: "mv-3", bg: WHITE, text: "Un módulo para cada servicio" },
+
+  { kind: "gig", id: "mv-4", bg: WHITE, text: "Precios dinámicos con IA", url: "despachos.movira.com.co", screen: "ia" },
 
   {
-    kind: "connected", id: "mv-2", bg: GRAY, text: "Conectada en tiempo real", url: "empresas.movira.com.co",
-    appVideo: "/videos/driver-oferta.mp4", appPoster: P.driverOferta,
-    webVideo: "/videos/dashboard-orden.mp4", webPoster: P.dashboardOrden,
-  },
-
-  { kind: "container", id: "mv-3", bg: WHITE, text: "Un módulo para cada servicio", video: "/videos/dashboard-tracking.mp4", poster: P.dashboardTracking },
-
-  { kind: "gig", id: "mv-5", bg: WHITE, text: "Precios dinámicos con IA", url: "despachos.movira.com.co", video: "/videos/cotizador-ia.mp4", poster: P.cotizadorIa, screen: "ia" },
-
-  {
-    kind: "ecosystem", id: "mv-7", bg: WHITE, text: "",
+    kind: "ecosystem", id: "mv-5", bg: WHITE, text: "Seis productos, una plataforma",
     items: [
-      { id: "eco-driver", kind: "android", label: "App Conductores", video: "/videos/driver.mp4", poster: P.driver },
-      { id: "eco-dashboard", kind: "safari", label: "Dashboard Empresas", url: "empresas.movira.com.co", video: "/videos/dashboard-tracking.mp4", poster: P.dashboardTracking, screen: "dashboard" },
-      { id: "eco-web", kind: "safari", label: "Web Pública", url: "movira.com.co", video: "/videos/web.mp4", poster: P.web, screen: "web" },
-      { id: "eco-ia", kind: "safari", label: "Motor de Precios IA", url: "despachos.movira.com.co", video: "/videos/cotizador-ia.mp4", poster: P.cotizadorIa, screen: "ia" },
-      { id: "eco-despachos", kind: "safari", label: "Despachos", url: "despachos.movira.com.co", video: "/videos/despachos.mp4", poster: P.despachos, screen: "despachos" },
-      { id: "eco-admin", kind: "safari", label: "Admin", url: "admin.movira.com.co", video: "/videos/admin.mp4", poster: P.admin, screen: "admin" },
+      { id: "eco-driver", kind: "android", label: "App Conductores" },
+      { id: "eco-dashboard", kind: "safari", label: "Dashboard Empresas", url: "empresas.movira.com.co", screen: "dashboard" },
+      { id: "eco-web", kind: "safari", label: "Web Pública", url: "movira.com.co", screen: "web" },
+      { id: "eco-ia", kind: "safari", label: "Motor de Precios IA", url: "despachos.movira.com.co", screen: "ia" },
+      { id: "eco-despachos", kind: "safari", label: "Despachos", url: "despachos.movira.com.co", screen: "despachos" },
+      { id: "eco-admin", kind: "safari", label: "Admin", url: "admin.movira.com.co", screen: "admin" },
     ],
   },
 
-  { kind: "moduleflow", id: "mv-8", bg: GRAY, text: "Así se conecta todo" },
+  { kind: "moduleflow", id: "mv-6", bg: GRAY, text: "Así se conecta todo" },
 
-  { kind: "techstack", id: "mv-9", bg: WHITE, text: "Lo que ya está en producción" },
+  { kind: "techstack", id: "mv-7", bg: WHITE, text: "Lo que ya está en producción" },
 ];
 
 const ALL_IDS = SLIDES.map((s) => s.id);
 
-function renderSlide(slide: Slide, zIndex: number) {
+function renderSlide(slide: Slide, zIndex: number, onAdvance: () => void) {
   switch (slide.kind) {
     case "phoneHero":
-      return <PhoneHero key={slide.id} {...slide} zIndex={zIndex} />;
+      return <PhoneHero key={slide.id} {...slide} zIndex={zIndex} onAdvance={onAdvance} />;
     case "connected":
       return <ConnectedSection key={slide.id} {...slide} zIndex={zIndex} />;
     case "container":
       return <ContainerSection key={slide.id} {...slide} zIndex={zIndex} />;
     case "gig":
       return <GigSection key={slide.id} {...slide} zIndex={zIndex} />;
-    case "split":
-      return <SplitSection key={slide.id} {...slide} zIndex={zIndex} />;
-    // case "ecosystem":
-    //   return <EcosystemGrid key={slide.id} {...slide} zIndex={zIndex} />;
+    case "ecosystem":
+      return <EcosystemGrid key={slide.id} {...slide} zIndex={zIndex} />;
     case "moduleflow":
       return <ModuleFlow key={slide.id} {...slide} zIndex={zIndex} />;
     case "techstack":
@@ -94,6 +75,10 @@ function renderSlide(slide: Slide, zIndex: number) {
 }
 
 export default function MoviraPage() {
+  /* `undefined` when the visitor prefers reduced motion — SmoothScrolling skips
+     the Lenis wrapper entirely then, so fall back to the native scroll. */
+  const lenis = useLenis();
+
   const scrollToNext = useCallback(() => {
     const scrollY = window.scrollY;
     for (const id of ALL_IDS) {
@@ -101,27 +86,23 @@ export default function MoviraPage() {
       if (!el) continue;
       const top = el.getBoundingClientRect().top + scrollY;
       if (top > scrollY + 10) {
-        window.scrollTo({ top, behavior: "smooth" });
+        if (lenis) lenis.scrollTo(top);
+        else window.scrollTo({ top, behavior: "smooth" });
         return;
       }
     }
-  }, []);
+  }, [lenis]);
 
   useEffect(() => {
     ScrollTrigger.refresh();
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "q" || e.key === "Q") scrollToNext();
-    };
-    window.addEventListener("keydown", onKey);
     return () => {
-      window.removeEventListener("keydown", onKey);
       ScrollTrigger.getAll().forEach((t) => t.kill());
     };
-  }, [scrollToNext]);
+  }, []);
 
   return (
     <main className={montserrat.className}>
-      {SLIDES.map((slide, i) => renderSlide(slide, i + 1))}
+      {SLIDES.map((slide, i) => renderSlide(slide, i + 1, scrollToNext))}
     </main>
   );
 }

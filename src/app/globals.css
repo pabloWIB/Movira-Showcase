@@ -2,103 +2,110 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
+/* ---------------------------------------------------------------------------
+   1. Design tokens
+   Single source of truth. `@theme inline` exposes each token to Tailwind as a
+   utility (bg-background, text-muted-foreground, rounded-lg…) and emits the
+   matching custom property, so there is no second hand-kept copy in :root.
+   --------------------------------------------------------------------------- */
+
 @theme inline {
-  --color-background: #FFFFFF;
-  --color-foreground: #000000;
-  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
-  --color-primary: #0A0A0A;
-  --color-primary-foreground: #FFFFFF;
-  --color-secondary: #F8F9FA;
-  --color-secondary-foreground: #000000;
-  --color-muted: #F8F9FA;
-  --color-muted-foreground: #666666;
-  --color-border: #E5E5E5;
-  --color-input: #E5E5E5;
-  --color-ring: #0A0A0A;
-  --color-accent: #0A0A0A;
-  --color-accent-foreground: #FFFFFF;
-  --color-card: #FFFFFF;
-  --color-card-foreground: #000000;
-  --color-popover: #FFFFFF;
-  --color-popover-foreground: #000000;
-  --color-destructive: #DC2626;
+  /* The product mockups use `font-sans` to read as native OS chrome; the
+     narrative sections load Montserrat through next/font instead. */
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI",
+    Roboto, sans-serif;
+
+  /* Neutral ink scale — the whole site is monochrome by design. */
+  --color-background: #ffffff;
+  --color-foreground: #0a0a0a;
+  --color-primary: #0a0a0a;
+  --color-primary-foreground: #ffffff;
+  --color-secondary: #f8f9fa;
+  --color-secondary-foreground: #0a0a0a;
+  --color-muted: #f4f4f5;
+  /* 4.83:1 on white — passes WCAG AA for normal-size text. */
+  --color-muted-foreground: #71717a;
+  --color-border: #e5e5e5;
+  --color-input: #e5e5e5;
+  --color-ring: #0a0a0a;
+  --color-accent: #0a0a0a;
+  --color-accent-foreground: #ffffff;
+  --color-card: #ffffff;
+  --color-card-foreground: #0a0a0a;
+  --color-popover: #ffffff;
+  --color-popover-foreground: #0a0a0a;
+  --color-destructive: #dc2626;
+
+  /* Surfaces used as section backgrounds by the slide array. */
+  --color-surface: #ffffff;
+  --color-surface-alt: #f4f4f5;
+
+  /* Spacing scale — 4 / 8 / 16 / 24 / 32 / 48 / 64 / 96. */
+  --spacing-1: 4px;
+  --spacing-2: 8px;
+  --spacing-4: 16px;
+  --spacing-6: 24px;
+  --spacing-8: 32px;
+  --spacing-12: 48px;
+  --spacing-16: 64px;
+  --spacing-24: 96px;
+
   --radius-sm: 4px;
   --radius-md: 6px;
   --radius-lg: 8px;
   --radius-xl: 12px;
   --radius-2xl: 16px;
+  --radius-3xl: 24px;
+
+  /* Type scale. The section headline is fluid between 21px and 47px. */
+  --text-section-title: clamp(21px, 4.39vw, 47px);
+
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-raised: 0 8px 30px rgba(0, 0, 0, 0.08);
+  --shadow-panel: 0 10px 40px rgba(0, 0, 0, 0.06);
+
+  --ease-out-soft: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-fast: 150ms;
+  --duration-base: 200ms;
+  --duration-slow: 250ms;
 }
 
-:root {
-  --radius: 0.5rem;
-  --background: #FFFFFF;
-  --foreground: #000000;
-  --primary: #0A0A0A;
-  --primary-foreground: #FFFFFF;
-  --secondary: #F8F9FA;
-  --secondary-foreground: #000000;
-  --muted: #F8F9FA;
-  --muted-foreground: #666666;
-  --accent: #0A0A0A;
-  --accent-foreground: #FFFFFF;
-  --border: #E5E5E5;
-  --input: #E5E5E5;
-  --ring: #0A0A0A;
-  --card: #FFFFFF;
-  --card-foreground: #000000;
-  --popover: #FFFFFF;
-  --popover-foreground: #000000;
-  --destructive: #DC2626;
-}
+/* ---------------------------------------------------------------------------
+   2. Base
+   --------------------------------------------------------------------------- */
 
 @layer base {
   * {
     @apply border-border;
-    scroll-snap-type: none !important;
   }
 
   html {
-    scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
   body {
-    background: #FFFFFF;
-    color: #000000;
-    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
+    background: var(--color-background);
+    color: var(--color-foreground);
     /* `clip` hides horizontal overflow without making <body> a scroll
        container, which would otherwise conflict with Lenis `root`. */
     overflow-x: clip;
     margin: 0;
     padding: 0;
   }
-}
 
-@layer components {
-  .scroll-section {
-    min-height: 100vh;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  /* A visible focus ring everywhere, without drawing one on mouse clicks. */
+  :focus-visible {
+    outline: 2px solid var(--color-ring);
+    outline-offset: 2px;
   }
 }
 
-@layer utilities {
-  .gpu-accelerated {
-    transform: translateZ(0);
-    will-change: transform;
-    backface-visibility: hidden;
-  }
-}
+/* ---------------------------------------------------------------------------
+   3. Lenis smooth scrolling handshake
+   Lenis adds the `lenis` / `lenis-smooth` classes to <html> automatically.
+   --------------------------------------------------------------------------- */
 
-.scroll-section + .scroll-section {
-  margin-top: 0;
-}
-
-/* --- Lenis smooth scrolling handshake ---
-   Lenis adds the `lenis` / `lenis-smooth` classes to <html> automatically. */
 html.lenis,
 html.lenis body {
   height: auto;
@@ -106,7 +113,7 @@ html.lenis body {
 
 .lenis.lenis-smooth {
   /* Don't let native smooth scrolling fight Lenis. */
-  scroll-behavior: auto !important;
+  scroll-behavior: auto;
 }
 
 .lenis.lenis-smooth [data-lenis-prevent] {
@@ -115,32 +122,27 @@ html.lenis body {
 }
 
 .lenis.lenis-stopped {
-  /* Used by lenis.stop() for scroll-locking (modals, mobile nav). */
+  /* Used by lenis.stop() for scroll-locking. */
   overflow: hidden;
 }
 
+/* ---------------------------------------------------------------------------
+   4. Reduced motion
+   The scroll-bound GSAP entrances and the Lenis wrapper both opt out in JS;
+   this covers the CSS-driven transitions and the hero's bounce cue.
+   --------------------------------------------------------------------------- */
+
 @media (prefers-reduced-motion: reduce) {
   html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-}
-
-/* --- BackgroundRippleEffect: per-cell ripple on click --- */
-@keyframes cell-ripple {
-  0% {
-    opacity: 0.4;
-    transform: scale(1);
-  }
-  30% {
-    opacity: 1;
-    transform: scale(0.9);
-  }
-  100% {
-    opacity: 0.4;
-    transform: scale(1);
-  }
-}
-
-.animate-cell-ripple {
-  animation: cell-ripple var(--duration, 200ms) ease-out var(--delay, 0ms);
 }

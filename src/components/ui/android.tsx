@@ -3,16 +3,12 @@ import { SVGProps, type ReactNode } from "react"
 export interface AndroidProps extends SVGProps<SVGSVGElement> {
   width?: number
   height?: number
-  src?: string
-  videoSrc?: string
   screen?: ReactNode
 }
 
 export function Android({
   width = 433,
   height = 882,
-  src,
-  videoSrc,
   screen,
   ...props
 }: AndroidProps) {
@@ -60,34 +56,7 @@ export function Android({
         r="4"
         className="fill-[#E5E5E5] dark:fill-[#404040]"
       />
-      {src && (
-        <image
-          href={src}
-          width="360"
-          height="800"
-          className="size-full object-cover"
-          preserveAspectRatio="xMidYMid slice"
-          clipPath="url(#clip0_514_20855)"
-        />
-      )}
-      {videoSrc && (
-        <foreignObject
-          width="380"
-          height="820"
-          clipPath="url(#clip0_514_20855)"
-          preserveAspectRatio="xMidYMid slice"
-        >
-          <video
-            className="size-full object-cover"
-            src={videoSrc}
-            autoPlay
-            loop
-            muted
-            playsInline
-          />
-        </foreignObject>
-      )}
-      {!videoSrc && !src && screen && (
+      {screen && (
         <foreignObject x="9" y="14" width="360" height="800" clipPath="url(#clip0_514_20855)">
           {screen}
         </foreignObject>

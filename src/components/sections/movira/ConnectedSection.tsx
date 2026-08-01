@@ -3,6 +3,7 @@ import { useRef } from "react";
 import { AnimatedBeam } from "@/components/ui/animated-beam";
 import {
   ACCENT,
+  MUTED,
   AndroidFrame,
   SafariFrame,
   AccentTitle,
@@ -16,20 +17,12 @@ export function ConnectedSection({
   text,
   bg,
   zIndex,
-  appVideo,
-  appPoster,
-  webVideo,
-  webPoster,
   url,
 }: {
   id: string;
   text: string;
   bg: string;
   zIndex: number;
-  appVideo: string;
-  appPoster: string;
-  webVideo: string;
-  webPoster: string;
   url?: string;
 }) {
   const sectionRef = useRef<HTMLElement>(null);
@@ -57,10 +50,10 @@ export function ConnectedSection({
           className="relative flex w-full max-w-5xl items-center justify-between gap-6 md:gap-10"
         >
           <div ref={leftRef} className="z-10 shrink-0">
-            <AndroidFrame video={appVideo} poster={appPoster} screen className="w-[120px] md:w-[200px]" />
+            <AndroidFrame className="w-[120px] md:w-[200px]" />
           </div>
           <div ref={rightRef} className="z-10 min-w-0 flex-1">
-            <SafariFrame video={webVideo} poster={webPoster} url={url} screen="dashboard" className="w-full" />
+            <SafariFrame url={url} screen="dashboard" className="w-full" />
           </div>
 
           <AnimatedBeam
@@ -70,7 +63,7 @@ export function ConnectedSection({
             duration={3}
             curvature={-40}
             gradientStartColor={ACCENT}
-            gradientStopColor="#A1A1AA"
+            gradientStopColor={MUTED}
           />
           <AnimatedBeam
             containerRef={containerRef}
@@ -80,7 +73,7 @@ export function ConnectedSection({
             delay={1.5}
             curvature={40}
             reverse
-            gradientStartColor="#A1A1AA"
+            gradientStartColor={MUTED}
             gradientStopColor={ACCENT}
           />
         </div>
