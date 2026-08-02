@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import SmoothScrolling from "@/components/SmoothScrolling";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -49,6 +50,7 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(PERSON_SCHEMA) }}
         />
+        <Analytics />
       </body>
     </html>
   );
